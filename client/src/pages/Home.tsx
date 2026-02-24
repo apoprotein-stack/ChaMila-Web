@@ -6,7 +6,15 @@ const heroImageUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CP
 
 const productImageUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/cbZ4OC1U557DWm3OCj177l-img-2_1771891718000_na1fn_Y2hhbWlsYS1wcm9kdWN0LXNob3djYXNl.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFB2ZzFOMC9zYW5kYm94L2NiWjRPQzFVNTU3RFdtM09DajE3N2wtaW1nLTJfMTc3MTg5MTcxODAwMF9uYTFmbl9ZMmhoYldsc1lTMXdjbTlrZFdOMExYTm9iM2RqWVhObC5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=QwWog-CAyecLuLfdwlSaDmVBz3Zwp7TEsSJ2bMeU5UgMq9BFcVVbXWiJ5AHh1rhsXacVWd9r41xWmy8Ocbh~smJUeAOB-Ck6jTlZeiQr3BSkDzEo8lu3VpxJWTEP9LP6RTBjxXhDk~0AZOC2Rsie1~XEilKT0SlSrB7PfbX3lxZb9jHEOZUs9ABAYxXjlg--g8T0tXuV8VAMDZ6k7kl9E~zlHGu6CXB5nJMUjwRfwgPkIzJCGEzZrZGglLW02S-LrxredwqX96AwqTvU7JYSY9TOwUybhWoM3qMRvObbRx1D8cavvtG-Kg21ta2RmKn~EdYK4bFhK8pqd364REaRGw__";
 
-const technologyImageUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/cbZ4OC1U557DWm3OCj177l-img-3_1771891699000_na1fn_Y2hhbWlsYS10ZWNobm9sb2d5LXZpc3VhbA.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFB2ZzFOMC9zYW5kYm94L2NiWjRPQzFVNTU3RFdtM09DajE3N2wtaW1nLTNfMTc3MTg5MTY5OTAwMF9uYTFmbl9ZMmhoYldsc1lTMTBaV05vYm05c2IyZDVMWFpwYzNWaGJBLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=n~-VbNvFFpmtXieo~r8G6PLxZjXFlF0qBpC5C89pPODGbvy3ERc3q-BEyhTGBr1ECP2j~yTtNHX5agcgzPEN1P3OiQ3N6Z8-NJGRJNF2E-KtqJV1LFFqoUuNqEEiLw5d9j5~725QqHPKHlKO~3qCX-7BBmgxxvXjz2nCYSLpSuXVKDbPc0qkTS9MqYFa0DWaIYB-2nk3HGMQCjqQgcNX5COELZzHtH10Mr1djo8wwK2l0iCzhzRpjg2dUHhe~CPMSOqA2TllWbox5y1YsNPTcIps9FxkaYhng3Aw3LYFPiYlEhr8sfskyWAjAoKa9Mu05kB6BNQ5Hda8184Cek1AtA__";
+const technologyImageUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/cbZ4OC1U557DWm3OCj177l-img-3_1771891699000_na1fn_Y2hhbWlsYS10ZWNobm9sb2d5LXZpc3VhbA.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFZ2ZzFOMC9zYW5kYm94L2NiWjRPQzFVNTU3RFdtM09DajE3N2wtaW1nLTNfMTc3MTg5MTY5OTAwMF9uYTFmbl9ZMmhoYldsc1lTMTBaV05vYm05c2IyZDVMWFpwYzNWaGJBLnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=n~-VbNvFFpmtXieo~r8G6PLxZjXFlF0qBpC5C89pPODGbvy3ERc3q-BEyhTGBr1ECP2j~yTtNHX5agcgzPEN1P3OiQ3N6Z8-NJGRJNF2E-KtqJV1LFFqoUuNqEEiLw5d9j5~725QqHPKHlKO~3qCX-7BBmgxxvXjz2nCYSLpSuXVKDbPc0qkTS9MqYFa0DWaIYB-2nk3HGMQCjqQgcNX5COELZzHtH10Mr1djo8wwK2l0iCzhzRpjg2dUHhe~CPMSOqA2TllWbox5y1YsNPTcIps9FxkaYhng3Aw3LYFPiYlEhr8sfskyWAjAoKa9Mu05kB6BNQ5Hda8184Cek1AtA__";
+
+const dogPlayingUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/DHBXyGYSMPuvqXE2YMiM7s-img-1_1771974119000_na1fn_Y2hhbWlsYS1kb2ctcGxheWluZy1vdXRkb29y.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFZ2ZzFOMC9zYW5kYm94L0RIQlh5R1lTTVB1dnFYRTJZTWlNN3MtaW1nLTFfMTc3MTk3NDExOTAwMF9uYTFmbl9ZMmhoYldsc1lTMWtiMmN0Y0d4aGVXbHVaeTF2ZFhSa2IyOTkucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=oHPRfNNOzp73wyQKD1XNddMqgcSvMp4jbdSgpTCGIX5hSAIC9DCv1orla3YuPwNbPO4AvbwFqu~o2z4oRp0bgEtd-2~8SiTvxe43UeGYNC37VVAy35rcGrhkFWriuKay~vsCm2WaQQaUO7nQFUzs1xBO-Dm1hSWGD5rrNSQ~5hIBOycp8ASFBzdlu8rpGDhxHNB66NqCfV59x~ULs3ZY2GHGa7CqssK6-oAbItV1cqyEpi3zKnyvngDsofkqlGx3UXyGzrQmpR3MGpq6bRzzxPgb3VJSz5uYubqZQldlt6BvSsKESfdpPuk1WiREP5kF-HvTt2JG0ZznXDaZFQiDMg__";
+
+const catActiveUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/DHBXyGYSMPuvqXE2YMiM7s-img-2_1771974117000_na1fn_Y2hhbWlsYS1jYXQtYWN0aXZl.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFZ2ZzFOMC9zYW5kYm94L0RIQlh5R1lTTVB1dnFYRTJZTWlNN3MtaW1nLTJfMTc3MTk3NDExNzAwMF9uYTFmbl9ZMmhoYldsc1lTMWpZWFF0WVdOMGFYWmwucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=gxodMJSfIFxigjiMtGpoITRYgPIdiK9uEtXZBytgXfzRFqncYAthJKQ1Da2MCmHqjeVI7PjOB6vx8Wx98W5nwLwECy7yPh0bTfumbovUakzwtkww5WkWfrcI5GGGkfBakksUeFBxyu0DpvmWzQXTeGjpWOSyTmZxf3HOIF2h2NlcT5ZU-DF4Qw4~mWCHYDgtPhqKdP3qqAXc6Vvs5Bjs1HQDjjpZF8ZnsLIkJjCOAnow~hjSGNFbVjbcosxRDqOV1GatbtazKd6cazLDh7oshbaOIw6duc-rDZBDjjrfk63GyHqWwa68MSOf0OO0Tkv1hegp4TIf4szzK3WlFUUK7A__";
+
+const petsTogetherUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/DHBXyGYSMPuvqXE2YMiM7s-img-3_1771974113000_na1fn_Y2hhbWlsYS1wZXRzLXRvZ2V0aGVy.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFZ2ZzFOMC9zYW5kYm94L0RIQlh5R1lTTVB1dnFYRTJZTWlNN3MtaW1nLTNfMTc3MTk3NDExMzAwMF9uYTFmbl9ZMmhoYldsc1lTMXdaWFJ6TFhSdloyVjBhR1Z5LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=QJ0PPqyPjqcGSTLH~AQcbbSJ3L5nJ4P-nVAhwfHKQ3oVAVoSulmKIEzVuRVB6zmeIuEs--UqHFxGztnAEN8Zo8XriHjmmbIkVVcUhATH47OH~CjiKSK2KvVrQkklMp8I2zTPtrBmTBpBxd0GnSvtBW~KJGpOX1JiOO7yqqj51w77atQvh7YKOQBm669zNQ8IAjpIfUPrb34iWa512eJCqO-iQi-gi3NMQ9MwxvvYrFYdawoYfYEE4YtUz6I3-YPNcIVZXSJ9Z5X~zcS7n6-nbd7iI02PfxC7~xPdcCvLLwH4~2jncQoNAU5F9wVz72NwGW6imEkKxWc7KBXpVYlUNQ__";
+
+const dogHealthyUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/DHBXyGYSMPuvqXE2YMiM7s-img-4_1771974112000_na1fn_Y2hhbWlsYS1kb2ctaGVhbHRoeS12aXRhbGl0eQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFZ2ZzFOMC9zYW5kYm94L0RIQlh5R1lTTVB1dnFYRTJZTWlNN3MtaW1nLTRfMTc3MTk3NDExMjAwMF9uYTFmbl9ZMmhoYldsc1lTMWtiMmN0YUdWaGJIUm9lUzEyYVhSaGJHbDBlUS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=tKo8uDr5DBWsFKCXvvGHUtSClxzqferWoQiqJhQNT3jHD7eg3MVwCxCkNd2QiZsEetgW9RtuVXcmyZUrbON-7m1wx0qVaaGgbkIsuBgvRcWJOdCImPKQ6JVX3jKOO-s6tg0TIqXE-oRPxKjHCRpuYjuThiGtqx6rk6LDFcUgRxkCQ88ne8-FWmqJdNLJzpgrhBC0Y~Fef7YsOGCQwjE6EdrSpc2qgLO4~pB8dm~3jK35ECYYHsz-bEnZmrGszOBtRqEhmasTreYdi~~3BQo~IgovXxhDjm0T1TkQqSyhxIRDaBA5TPQxxGnB8WZ0CHPMOLROuSHFr4hYMTTOAssorg__";
 
 const displayFontStyle = { fontFamily: "'Playfair Display', serif" };
 
@@ -87,6 +95,39 @@ export default function Home() {
             alt="CháMila Premium Pet Supplements"
             className="w-full h-full object-cover"
           />
+        </div>
+      </section>
+
+      {/* Vibrant Pet Section */}
+      <section className="py-16 bg-gradient-to-r from-primary/10 to-accent/10">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6" style={displayFontStyle}>
+                健康活力的毛孩
+              </h2>
+              <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
+                CháMila 的產品設計目標，就是讓每一隻毛孩都能展現最佳的活力與健康狀態。透過科學配方與優質肉源，我們幫助飼主為毛孩的日常保健做出最好的選擇。
+              </p>
+              <div className="flex gap-4">
+                <div className="flex-1">
+                  <h4 className="font-semibold text-primary mb-2">犬用保健</h4>
+                  <p className="text-sm text-foreground/70">針對狗狗的特定需求設計，從腸胃到心血管全面照顧。</p>
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-primary mb-2">貓用保健</h4>
+                  <p className="text-sm text-foreground/70">符合貓咪營養需求，提升活力與毛髮光澤。</p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-xl">
+              <img
+                src={petsTogetherUrl}
+                alt="Happy pets with CháMila"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -209,6 +250,47 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Active Pets Showcase */}
+      <section className="py-16 bg-white">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
+              <img
+                src={dogPlayingUrl}
+                alt="Happy dog playing outdoor"
+                className="w-full h-80 object-cover"
+              />
+              <div className="p-6 bg-gradient-to-br from-primary/5 to-accent/5">
+                <h3 className="font-semibold text-primary mb-2">活力充沛</h3>
+                <p className="text-sm text-foreground/70">毛孩的每一次跑跳，都是健康的表現。</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
+              <img
+                src={catActiveUrl}
+                alt="Active cat playing indoor"
+                className="w-full h-80 object-cover"
+              />
+              <div className="p-6 bg-gradient-to-br from-primary/5 to-accent/5">
+                <h3 className="font-semibold text-primary mb-2">靈活敏捷</h3>
+                <p className="text-sm text-foreground/70">貓咪的敏捷身手，源自於完整的營養補充。</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
+              <img
+                src={dogHealthyUrl}
+                alt="Healthy dog with vitality"
+                className="w-full h-80 object-cover"
+              />
+              <div className="p-6 bg-gradient-to-br from-primary/5 to-accent/5">
+                <h3 className="font-semibold text-primary mb-2">毛髮亮麗</h3>
+                <p className="text-sm text-foreground/70">優質營養讓毛孩的毛髮更加蓬鬆有光澤。</p>
               </div>
             </div>
           </div>
