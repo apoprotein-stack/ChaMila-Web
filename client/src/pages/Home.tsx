@@ -16,6 +16,8 @@ const petsTogetherUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z
 
 const dogHealthyUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/DHBXyGYSMPuvqXE2YMiM7s-img-4_1771974112000_na1fn_Y2hhbWlsYS1kb2ctaGVhbHRoeS12aXRhbGl0eQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFZ2ZzFOMC9zYW5kYm94L0RIQlh5R1lTTVB1dnFYRTJZTWlNN3MtaW1nLTRfMTc3MTk3NDExMjAwMF9uYTFmbl9ZMmhoYldsc1lTMWtiMmN0YUdWaGJIUm9lUzEyYVhSaGJHbDBlUS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=tKo8uDr5DBWsFKCXvvGHUtSClxzqferWoQiqJhQNT3jHD7eg3MVwCxCkNd2QiZsEetgW9RtuVXcmyZUrbON-7m1wx0qVaaGgbkIsuBgvRcWJOdCImPKQ6JVX3jKOO-s6tg0TIqXE-oRPxKjHCRpuYjuThiGtqx6rk6LDFcUgRxkCQ88ne8-FWmqJdNLJzpgrhBC0Y~Fef7YsOGCQwjE6EdrSpc2qgLO4~pB8dm~3jK35ECYYHsz-bEnZmrGszOBtRqEhmasTreYdi~~3BQo~IgovXxhDjm0T1TkQqSyhxIRDaBA5TPQxxGnB8WZ0CHPMOLROuSHFr4hYMTTOAssorg__";
 
+const logoUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/foDWJtLKKXQBUytM.png";
+
 const displayFontStyle = { fontFamily: "'Playfair Display', serif" };
 
 export default function Home() {
@@ -26,10 +28,12 @@ export default function Home() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">C</span>
-            </div>
+          <div className="flex items-center gap-3">
+            <img
+              src={logoUrl}
+              alt="CháMila Logo"
+              className="w-10 h-10 object-contain"
+            />
             <span className="font-bold text-lg text-primary" style={displayFontStyle}>CháMila</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
