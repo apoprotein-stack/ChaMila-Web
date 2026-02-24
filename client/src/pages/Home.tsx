@@ -183,42 +183,106 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Brand Story Section */}
-      <section id="about" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
+      {/* Brand Story Section - Origin Story */}
+      <section id="about" className="py-20 bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6" style={displayFontStyle}>
-                品牌故事
-              </h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold text-primary mb-3">保健食品化 × 食品保健化</h3>
-                  <p className="text-foreground/80 leading-relaxed">
-                    CháMila 的核心理念是將保健成分融入好吃的肉泥或肉錠，降低毛孩的餵食抗拒。同時，我們不只提供好吃的零食，而是有明確機能訴求、有劑量設計、有獸醫師觀察數據的日常補充方案。
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-primary mb-3">台灣豬肉副產品的優勢</h3>
-                  <p className="text-foreground/80 leading-relaxed">
-                    台灣年屠宰豬隻約 860 萬頭，豬肺、豬脾等副產品年產量穩定、成本低（35–55 元/kg，是雞魚肉的 25–30%）。我們透過自建工廠直接控制製程與品質，確保每一批產品都符合製藥級標準。
-                  </p>
-                </div>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center" style={displayFontStyle}>
+              品牌故事
+            </h2>
+            
+            {/* Origin Story */}
+            <div className="mb-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border">
+              <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>因為牠們是家人</h3>
+              <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
+                <p>
+                  我永遠記得那個下雨的晚上，米粒蜷在我懷裡，抓癢抓到皮都紅了，拉肚子拉到虛弱。帶去醫院，醫生一句「可能是食物過敏」，讓我心如刀割。
+                </p>
+                <p>
+                  原來我給她的「愛」，其實是一堆雞肉+牛肉+魚肉混在一起的飼料，蛋白質來源複雜又不明。市面上許多寵物食品，肉類來源並沒有強制完整溯源，飼主根本看不清裡面到底是什麼。結果毛小孩蛋白質過敏越來越普遍——皮膚發紅、掉毛、反覆耳炎、腸胃不適……這些問題，很多時候不是生病，而是「吃錯了」。
+                </p>
+                <p className="font-semibold text-primary">
+                  那一刻我真正明白：毛小孩不是寵物，牠們是我們生活裡最親密的家人。每天等我們回家、陪我們度過低潮、用一輩子無條件信任我們——這樣的家人，值得我們用最講究、最先進的方式去愛。
+                </p>
               </div>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src={productImageUrl}
-                alt="CháMila Product Range"
-                className="w-full h-full object-cover"
-              />
+
+            {/* Why Pork */}
+            <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>為什麼選擇豬肉</h3>
+                <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+                  華人從小吃豬肉長大，我們最懂豬肉的安全與親切。在歐美，豬肉也已成為寵物食品的新寵——因為它相對低敏、蛋白質優質，不像牛肉、雞肉那麼容易引發過敏。
+                </p>
+                <p className="text-lg text-foreground/80 leading-relaxed">
+                  台灣年屠宰豬隻約 860 萬頭，豬肺、豬脾等副產品年產量穩定、成本低。我們透過自建工廠直接控制製程與品質，確保每一批產品都符合製藥級標準。
+                </p>
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <img
+                  src={productImageUrl}
+                  alt="CháMila Product Range"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Philosophy */}
+            <div className="mb-16 p-8 rounded-2xl bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
+              <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>米其林精神 × 科學精準</h3>
+              <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+                從那天起，我們決定用獨家營養技術 + 法式精心料理的精神，來重新定義寵物營養。就像頂級米其林主廚對待珍稀食材一樣：不只是使用，而是透過科學精準的調理與專利技術，把每一份營養價值完整釋放、穩定保留，並提升到最高生物利用率。
+              </p>
+              <p className="text-lg text-foreground/80 leading-relaxed">
+                我們專注於豬肉中最精華、最珍貴的部位，運用我們獨家的營養技術——包括低溫酶解活化、奈米級微乳化包埋與多階段營養鎖定系統——完整釋放這些部位的天然高密度營養精華，遠遠超越一般豬肉所能提供的價值。同時，我們以極致嚴謹的態度，徹底去除多餘油脂與不需要的成分，只保留最純淨、最低脂、最高效能的營養核心。
+              </p>
+            </div>
+
+            {/* Quality Promise */}
+            <div className="mb-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border">
+              <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>國家級把關的承諾</h3>
+              <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+                每一批原料，都經過層層科學調理與檢驗，取得 CAS 國家品質保證標章。這是我們對每一隻毛孩、每一戶家庭的鄭重承諾：
+              </p>
+              <p className="text-xl font-semibold text-primary text-center py-6 px-4 bg-white rounded-lg border-l-4 border-accent">
+                「這包裡的東西，我們敢讓自己的家人吃，也敢讓你的家人吃。」
+              </p>
+              <p className="text-lg text-foreground/80 leading-relaxed mt-6">
+                單一蛋白來源、來源清楚、油脂極低、國家級把關，讓過敏風險降到最低。
+              </p>
+            </div>
+
+            {/* Product Philosophy */}
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
+              <h3 className="text-2xl font-bold text-primary mb-8 text-center" style={displayFontStyle}>我們的承諾</h3>
+              <p className="text-lg text-foreground/80 leading-relaxed mb-8 text-center">
+                我們相信，真正的愛不是給最多，而是給最頂級、最科學、最懂的那一份。因為毛小孩是家人，我們也只想用最獨家、最講究的方式，回報這份無條件的愛。
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div className="p-6 bg-white rounded-lg border border-border">
+                  <h4 className="font-semibold text-primary text-lg mb-3">單一蛋白精華</h4>
+                  <p className="text-foreground/70">精選台灣豬肉，來源清楚，降低過敏風險</p>
+                </div>
+                <div className="p-6 bg-white rounded-lg border border-border">
+                  <h4 className="font-semibold text-primary text-lg mb-3">獨家營養技術</h4>
+                  <p className="text-foreground/70">ThermoNutricUp 技術，保留 95% 營養成分</p>
+                </div>
+                <div className="p-6 bg-white rounded-lg border border-border">
+                  <h4 className="font-semibold text-primary text-lg mb-3">法式精心調理</h4>
+                  <p className="text-foreground/70">米其林精神，精準調配每一份營養</p>
+                </div>
+                <div className="p-6 bg-white rounded-lg border border-border">
+                  <h4 className="font-semibold text-primary text-lg mb-3">CAS 國家品質保證</h4>
+                  <p className="text-foreground/70">每批檢驗，製藥級標準，敢讓家人吃</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Technology Section */}
-      <section id="technology" className="py-20 bg-white">
+      <section id="technology" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 rounded-2xl overflow-hidden shadow-xl">
