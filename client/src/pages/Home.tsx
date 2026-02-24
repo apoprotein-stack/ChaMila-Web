@@ -57,7 +57,7 @@ export default function Home() {
                 為毛孩的健康，做最好的選擇
               </h1>
               <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
-                單一豬肉源 × 機能配方 × 獸醫師背書。透過 TNU 熱封營養技術，將台灣在地豬肉轉化為寵物保健食品，讓毛孩享受科學級的營養補充。
+                單一豬肉源 × 機能配方 × 獸醫師背書。透過 ThermoNutricUp 技術，將台灣在地豬肉轉化為寵物保健食品，讓毛孩享受科學級的營養補充。產品採用 50-300g 夾鏈袋包裝，新鮮便利。
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button className="bg-primary hover:bg-primary/90 text-white text-base h-12 px-8">
@@ -185,16 +185,16 @@ export default function Home() {
             </div>
             <div className="order-1 lg:order-2">
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6" style={displayFontStyle}>
-                TNU 熱封營養技術
+                ThermoNutricUp 技術
               </h2>
               <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
-                CháMila 的獨特技術優勢在於 TNU（Thermal Nutrient Sealing）熱封營養技術，透過三階段精密製程，將營養成分完整保留在每一顆肉錠或每一條肉泥中。
+                CháMila 的獨特技術優勢在於 ThermoNutricUp（TNU）技術，透過三階段精密製程，將營養成分完整保留在每一顆肉錠或每一條肉泥中。所有產品採用環保 50-300g 夾鏈袋包裝，方便飼主按需取用，確保新鮮度與便利性。
               </p>
 
               <div className="space-y-4">
                 {[
                   { step: "第一階段", title: "精選肉源", desc: "台灣在地豬肺脾，新鮮直送工廠" },
-                  { step: "第二階段", title: "熱封製程", desc: "精密溫度控制，保留 95% 以上營養" },
+                  { step: "第二階段", title: "ThermoNutricUp 製程", desc: "精密溫度控制，保留 95% 以上營養成分" },
                   { step: "第三階段", title: "機能配方", desc: "添加機能成分，完成保健食品化" }
                 ].map((item, idx) => (
                   <div key={idx} className="flex gap-4">
