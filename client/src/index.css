@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -43,39 +45,40 @@
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
+  /* CháMila Brand Colors */
+  --primary: oklch(0.35 0.12 260); /* 玄青色 - Deep Teal */
+  --primary-foreground: oklch(0.98 0.002 65);
+  --accent: oklch(0.65 0.18 60); /* 流沙金 - Sandy Gold */
+  --accent-foreground: oklch(0.15 0.05 65);
+  --sidebar-primary: oklch(0.35 0.12 260);
+  --sidebar-primary-foreground: oklch(0.98 0.002 65);
+  --chart-1: oklch(0.65 0.18 60);
+  --chart-2: oklch(0.45 0.15 260);
+  --chart-3: oklch(0.35 0.12 260);
+  --chart-4: oklch(0.25 0.08 260);
+  --chart-5: oklch(0.55 0.12 260);
   --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
+  --background: oklch(0.98 0.002 65);
+  --foreground: oklch(0.2 0.05 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
+  --card-foreground: oklch(0.2 0.05 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
+  --popover-foreground: oklch(0.2 0.05 260);
+  --secondary: oklch(0.45 0.12 260);
+  --secondary-foreground: oklch(0.98 0.002 65);
+  --muted: oklch(0.92 0.01 260);
+  --muted-foreground: oklch(0.45 0.08 260);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --border: oklch(0.92 0.01 260);
+  --input: oklch(0.95 0.01 260);
+  --ring: oklch(0.65 0.18 60);
+  --sidebar: oklch(0.98 0.002 65);
+  --sidebar-foreground: oklch(0.2 0.05 260);
+  --sidebar-accent: oklch(0.65 0.18 60);
+  --sidebar-accent-foreground: oklch(0.15 0.05 65);
+  --sidebar-border: oklch(0.92 0.01 260);
+  --sidebar-ring: oklch(0.65 0.18 60);
 }
 
 .dark {
@@ -117,8 +120,25 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    font-family: 'Playfair Display', serif;
+  }
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
