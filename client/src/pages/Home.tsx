@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Leaf, Shield, Zap, Heart } from "lucide-react";
 import { useState } from "react";
+import FunctionSelector from "@/components/FunctionSelector";
 
 const heroImageUrl = "https://private-us-east-1.manuscdn.com/sessionFile/i50z0CPZHEEGxxzpPvg1N0/sandbox/cbZ4OC1U557DWm3OCj177l-img-1_1771891705000_na1fn_Y2hhbWlsYS1oZXJvLWJhbm5lcg.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvaTUwejBDUFpIRUVHeHh6cFB2ZzFOMC9zYW5kYm94L2NiWjRPQzFVNTU3RFdtM09DajE3N2wtaW1nLTFfMTc3MTg5MTcwNTAwMF9uYTFmbl9ZMmhoYldsc1lTMW9aWEp2TFdKaGJtNWxjZy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=fwfNN6ybBrTSCk~ofL81H0zREojXa9cQeRSMfbOOBBH286oUcz9DW639jYzZUvSWVJWTuT4d8eoYejkDEfeurFKd97Au2S7xE4gvWKzbHd6cH2Jp2jTvTHNenkIM5QpEIl-nV49-kM6b~Nwamzw2RWRkgBtOqYQl7EJDT1jl-WuI2~9zZ1t0f6rcU3WT48rshF7buuSw5n5qRLF0CLnjyyHaQk5WPMoly8DhxmoMyAIZmHYoVMGFrLayRiVhssFzsebJOEJs1ilfWb2hNU5pvb~~jnmpWcwBWhTDL~QJASetshyzZaMlRkLfRGMT9cb0-pyzHWjPnFCwuhS~wUtPlQ__";
 
@@ -45,6 +46,9 @@ export default function Home() {
             </a>
             <a href="#technology" className="text-sm text-foreground hover:text-primary transition">
               技術
+            </a>
+            <a href="/faq" className="text-sm text-foreground hover:text-primary transition">
+              常見問題
             </a>
             <a href="#contact" className="text-sm text-foreground hover:text-primary transition">
               聯絡我們
@@ -321,6 +325,20 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Interactive Function Selector */}
+          <div className="mt-20 p-12 bg-white rounded-2xl border border-border shadow-lg">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-primary mb-3" style={displayFontStyle}>
+                自由混搭機能組合
+              </h3>
+              <p className="text-foreground/70">
+                選擇毛孩需要的機能組合，即時看到營養成分與建議用量
+              </p>
+            </div>
+
+            <FunctionSelector />
+          </div>
         </div>
       </section>
 
@@ -394,6 +412,63 @@ export default function Home() {
                 <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/5">
                   了解詳情
                 </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Veterinarian Recommendation Section */}
+      <section className="py-20 bg-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4" style={displayFontStyle}>
+              獸醫師推薦
+            </h2>
+            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
+              來自專業獸醫師的信任背書，為毛孩的健康保駕護航
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "李獸醫",
+                clinic: "台北寵物醫療中心",
+                specialty: "內科專家",
+                testimonial: "CháMila 的 ThermoNutricUp 技術保留了豬肉的完整營養，我在臨床上看到使用者的毛孩腸胃狀況明顯改善。",
+                avatar: "🐾"
+              },
+              {
+                name: "王獸醫",
+                clinic: "新竹動物醫院",
+                specialty: "營養學專家",
+                testimonial: "單一豬肉源的設計非常科學，避免了多種蛋白質混合可能引起的過敏反應。我推薦給許多有敏感腸胃的毛孩飼主。",
+                avatar: "🏥"
+              },
+              {
+                name: "陳獸醫",
+                clinic: "台中寵物健康診所",
+                specialty: "預防醫學專家",
+                testimonial: "保健食品化的概念很先進。CháMila 不只是零食，而是真正的營養補充，幫助毛孩從根本上提升免疫力。",
+                avatar: "💚"
+              }
+            ].map((vet, idx) => (
+              <div
+                key={idx}
+                className="p-8 rounded-xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border hover:border-accent transition"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="text-5xl">{vet.avatar}</div>
+                  <div>
+                    <h3 className="font-semibold text-primary text-lg">{vet.name}</h3>
+                    <p className="text-sm text-foreground/70">{vet.clinic}</p>
+                    <p className="text-xs text-accent font-semibold mt-1">{vet.specialty}</p>
+                  </div>
+                </div>
+                <p className="text-foreground/80 leading-relaxed italic">
+                  「{vet.testimonial}」
+                </p>
               </div>
             ))}
           </div>
