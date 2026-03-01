@@ -10,12 +10,12 @@ interface FAQItem {
 export default function FAQ() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const displayFontStyle = { fontFamily: "'Playfair Display', serif" };
+  const displayFontStyle = { fontFamily: "Georgia, serif", fontWeight: "700" };
 
   const faqItems: FAQItem[] = [
     {
       question: "為什麼 CháMila 比一般寵物飼料貴？",
-      answer: "CháMila 採用單一豬肉源與 ThermoNutricUp 技術，將豬肉轉化為科學級的保健食品。我們不添加穀物或多種蛋白質混合，確保營養完整性與消化吸收率。這是投資毛孩的長期健康，而非單純的日常飼料。"
+      answer: "CháMila 採用在地臺灣豬 CAS認證與 ThermoNutricUp 技術，將豬肉轉化為科學級的保健食品。我們不添加穀物或多種蛋白質混合，確保營養完整性與消化吸收率。這是投資毛孩的長期健康，而非單純的日常飼料。"
     },
     {
       question: "CháMila 適合多大的毛孩？",
@@ -27,7 +27,7 @@ export default function FAQ() {
     },
     {
       question: "毛孩有過敏症狀，可以吃 CháMila 嗎？",
-      answer: "CháMila 使用單一豬肉源，避免了多蛋白質混合可能引起的過敏反應。但如果毛孩對豬肉過敏，則不建議使用。建議在使用前先諮詢獸醫師，特別是對於有嚴重過敏史的毛孩。"
+      answer: "CháMila 使用在地臺灣豬 CAS認證，避免了多蛋白質混合可能引起的過敏反應。但如果毛孩對豬肉過敏，則不建議使用。建議在使用前先諮詢獸醫師，特別是對於有嚴重過敏史的毛孩。"
     },
     {
       question: "訂閱制的最低訂閱期是多久？",
