@@ -22,6 +22,8 @@ const logoUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/3
 
 const zerozenLogoUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/WjSQDPRKfLBlEAkf.png";
 
+const zerozenProductImageUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/WixpoTFQLjYnKUlB.png";
+
 const displayFontStyle = { fontFamily: "Georgia, serif", fontWeight: "700" };
 
 export default function Home() {
@@ -514,12 +516,20 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Product Matrix */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-primary mb-12 text-center" style={displayFontStyle}>
-              產品矩陣 × 場景應用
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Product Matrix with Image */}
+          <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="rounded-2xl overflow-hidden shadow-xl bg-white p-8 flex items-center justify-center">
+              <img
+                src={zerozenProductImageUrl}
+                alt="ZeroZen 家庭隨手瓶"
+                className="w-full max-w-sm h-auto object-contain"
+              />
+            </div>
+            <div>
+              <h3 className="text-3xl font-bold text-primary mb-8" style={displayFontStyle}>
+                產品矩陣 × 場景應用
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 {
                   name: "出外隨身瓶",
@@ -573,6 +583,8 @@ export default function Home() {
                   </Button>
                 </div>
               ))}
+
+              </div>
             </div>
           </div>
 
