@@ -20,6 +20,8 @@ const dogHealthyUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/
 
 const logoUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/foDWJtLKKXQBUytM.png";
 
+const zerozenLogoUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/WjSQDPRKfLBlEAkf.png";
+
 const displayFontStyle = { fontFamily: "Georgia, serif", fontWeight: "700" };
 
 export default function Home() {
@@ -45,6 +47,9 @@ export default function Home() {
             </a>
             <a href="#products" className="text-sm text-foreground hover:text-primary transition">
               產品
+            </a>
+            <a href="#zerozen" className="text-sm text-foreground hover:text-primary transition">
+              ZeroZen
             </a>
             <a href="#technology" className="text-sm text-foreground hover:text-primary transition">
               技術
@@ -231,7 +236,7 @@ export default function Home() {
             {/* Why Pork */}
             <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>為什麼選擇豬肉</h3>
+                <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>信賴台灣我選CAS 台灣豬</h3>
                 <p className="text-lg text-foreground/80 leading-relaxed mb-6">
                   華人從小吃豬肉長大，我們最懂豬肉的安全與親切。在歐美，豬肉也已成為寵物食品的新寵——因為它相對低敏、蛋白質優質，不像牛肉、雞肉那麼容易引發過敏。
                 </p>
@@ -488,6 +493,111 @@ export default function Home() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ZeroZen Section */}
+      <section id="zerozen" className="py-20 bg-gradient-to-br from-blue-50 to-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <img
+              src={zerozenLogoUrl}
+              alt="ZeroZen Logo"
+              className="w-32 h-32 mx-auto mb-6 object-contain"
+            />
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4" style={displayFontStyle}>
+              ZeroZen 臭難忍
+            </h2>
+            <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
+              瞬時歸零，重塑生活美學。藥典級 BKC 除臭技術，免稀釋直接用，讓寵物與居家環境瞬間清新。
+            </p>
+          </div>
+
+          {/* Product Matrix */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-primary mb-12 text-center" style={displayFontStyle}>
+              產品矩陣 × 場景應用
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  name: "出外隨身瓶",
+                  spec: "150ml",
+                  price: "$199",
+                  scene: "車內、散步、辦公室",
+                  icon: "🚗"
+                },
+                {
+                  name: "家庭隨手瓶",
+                  spec: "300ml",
+                  price: "$370",
+                  scene: "客廳、玄關、寵物區",
+                  icon: "🏠"
+                },
+                {
+                  name: "立即補充罐",
+                  spec: "300ml",
+                  price: "$280",
+                  scene: "隨手瓶用罄後即時替換",
+                  icon: "♻️"
+                },
+                {
+                  name: "個人補充罐",
+                  spec: "500ml",
+                  price: "$450",
+                  scene: "多寵家庭",
+                  icon: "👨‍👩‍👧‍👦"
+                },
+                {
+                  name: "居家補充瓶",
+                  spec: "2000ml",
+                  price: "$1,200",
+                  scene: "地板除垢、大面積清潔",
+                  icon: "🧹"
+                }
+              ].map((product, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 rounded-xl bg-white border border-border hover:border-blue-400 hover:shadow-lg transition"
+                >
+                  <div className="text-4xl mb-4">{product.icon}</div>
+                  <h4 className="text-xl font-bold text-primary mb-2" style={displayFontStyle}>
+                    {product.name}
+                  </h4>
+                  <p className="text-sm text-foreground/70 mb-3">{product.spec}</p>
+                  <p className="text-lg font-semibold text-accent mb-4">{product.price}</p>
+                  <p className="text-sm text-foreground/80 mb-4">{product.scene}</p>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                    了解詳情
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Technology Highlight */}
+          <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+            <h3 className="text-2xl font-bold mb-6" style={displayFontStyle}>
+              藥典級 BKC × 免稀釋設計
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <div className="text-3xl mb-3">⚗️</div>
+                <h4 className="font-semibold mb-2">成本優勢</h4>
+                <p className="text-white/90">採用藥典級 BKC，成本低、穩定性高、供應穩定，提供最佳性價比。</p>
+              </div>
+              <div>
+                <div className="text-3xl mb-3">🎯</div>
+                <h4 className="font-semibold mb-2">免稀釋直接用</h4>
+                <p className="text-white/90">直擊競品痛點，無需換算稀釋倍數，降低決策成本，提升使用頻率。</p>
+              </div>
+              <div>
+                <div className="text-3xl mb-3">⚡</div>
+                <h4 className="font-semibold mb-2">瞬時歸零</h4>
+                <p className="text-white/90">科學除臭體驗，快速消除異味，讓寵物與居家環境瞬間清新。</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
