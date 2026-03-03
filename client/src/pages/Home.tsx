@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Leaf, Shield, Zap, Heart } from "lucide-react";
 import { useState } from "react";
 import FunctionSelector from "@/components/FunctionSelector";
+import ReservationModal from "@/components/ReservationModal";
 
 const heroImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-hero-banner-final-jq7jj2MVgDakkTSxRcKKz2.webp";
 
@@ -23,6 +24,7 @@ const displayFontStyle = { fontFamily: "Georgia, serif", fontWeight: "700" };
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("mission");
+  const [isReservationOpen, setIsReservationOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -53,10 +55,21 @@ export default function Home() {
             <a href="#contact" className="text-sm text-foreground hover:text-primary transition">
               聯絡我們
             </a>
+            <a href="/member" className="text-sm text-foreground hover:text-primary transition">
+              會員中心
+            </a>
           </div>
-          <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
-            預約試吃
-          </Button>
+          <div className="flex items-center gap-2">
+            <a href="/auth" className="text-sm text-foreground hover:text-primary transition">
+              登入
+            </a>
+            <Button 
+              onClick={() => setIsReservationOpen(true)}
+              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
+              預約試吃
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -79,7 +92,11 @@ export default function Home() {
                 <Button className="bg-primary hover:bg-primary/90 text-white text-base h-12 px-8">
                   了解更多 <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
-                <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 text-base h-12 px-8">
+                <Button 
+                  onClick={() => setIsReservationOpen(true)}
+                  variant="outline" 
+                  className="border-primary text-primary hover:bg-primary/5 text-base h-12 px-8"
+                >
                   預約試吃
                 </Button>
               </div>
@@ -541,6 +558,12 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Reservation Modal */}
+      <ReservationModal 
+        isOpen={isReservationOpen} 
+        onClose={() => setIsReservationOpen(false)} 
+      />
     </div>
   );
 }
