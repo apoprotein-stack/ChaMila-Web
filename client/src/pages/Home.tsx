@@ -597,7 +597,7 @@ export default function Home() {
               ZeroZen 臭難忍
             </h2>
             <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
-              瞬時歸零，重塑生活美學。藥典級 BKC 除臭技術，免稀釋直接用，讓寵物與居家環境瞬間清新。
+              瞬時歸零，重塑生活美學。採用烷基醯胺甜菜鹼（Alkyl Amido Betaine）除臭技術，免稀釋直接用，讓寵物與居家環境瞬間清新。
             </p>
           </div>
 
@@ -676,13 +676,13 @@ export default function Home() {
           {/* Technology Highlight */}
           <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white">
             <h3 className="text-2xl font-bold mb-6" style={displayFontStyle}>
-              藥典級 BKC × 免稀釋設計
+              烷基醯胺甜菜鹼 × 免稀釋設計
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <div className="text-3xl mb-3">⚗️</div>
-                <h4 className="font-semibold mb-2">成本優勢</h4>
-                <p className="text-white/90">採用藥典級 BKC，成本低、穩定性高、供應穩定，提供最佳性價比。</p>
+                <h4 className="font-semibold mb-2">溫和高效成分</h4>
+                <p className="text-white/90">採用烷基醯胺甜菜鹼（Alkyl Amido Betaine），溫和不刺激、除臭效果強、對寵物肌膚友善，提供最佳性價比。</p>
               </div>
               <div>
                 <div className="text-3xl mb-3">🎯</div>
