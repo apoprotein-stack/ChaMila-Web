@@ -24,6 +24,16 @@ const zerozenLogoUrl = "https://files.manuscdn.com/user_upload_by_module/session
 
 const zerozenProductImageUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/WixpoTFQLjYnKUlB.png";
 
+const brandStoryImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-brand-story-founder-WN2EpnGZZZpKc7qCwACkUW.webp";
+
+const qualityFactoryImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-quality-factory-PE9p389xPdQzYsAgFu77Eb.webp";
+
+const qualityTestingImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-quality-testing-Bg8NiMpzVtMwNnHxQpufv2.webp";
+
+const socialResponsibilityImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-social-responsibility-hMVLhpa7csJPn4svnsfnv7.webp";
+
+const sustainabilityImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-sustainability-Ph56jcNTsYNf93AsZQN.webp";
+
 const displayFontStyle = { fontFamily: "Georgia, serif", fontWeight: "700" };
 
 export default function Home() {
@@ -265,21 +275,96 @@ export default function Home() {
                 我們專注於豬肉中最精華、最珍貴的部位，運用我們獨家的營養技術——包括低溫酶解活化、奈米級微乳化包埋與多階段營養鎖定系統——完整釋放這些部位的天然高密度營養精華，遠遠超越一般豬肉所能提供的價值。同時，我們以極致嚴謹的態度，徹底去除多餘油脂與不需要的成分，只保留最純淨、最低脂、最高效能的營養核心。
               </p>
             </div>
-
-            {/* Quality Promise */}
-            <div className="mb-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border">
-              <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>國家級把關的承諾</h3>
-              <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                每一批原料，都經過層層科學調理與檢驗，取得 CAS 國家品質保證標章。這是我們對每一隻毛孩、每一戶家庭的鄭重承諾：
-              </p>
-              <p className="text-xl font-semibold text-primary text-center py-6 px-4 bg-white rounded-lg border-l-4 border-accent">
-                「這包裡的東西，我們敢讓自己的家人吃，也敢讓你的家人吃。」
-              </p>
-              <p className="text-lg text-foreground/80 leading-relaxed mt-6">
-                單一蛋白來源、來源清楚、油脂極低、國家級把關，讓過敏風險降到最低。
-              </p>
+            {/* Quality Promise with Images */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold text-primary mb-8" style={displayFontStyle}>品質承諾：從研發到您家</h3>
+              
+              {/* Quality Factory */}
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src={qualityFactoryImageUrl}
+                    alt="CháMila GMP Certified Factory"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-bold text-primary mb-4" style={displayFontStyle}>GMP 認證工廠</h4>
+                  <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+                    我們的自建工廠採用 GMP 國際標準，配備 ThermoNutricUp 專利設備。每一批產品都在恆溫、恆濕、無菌環境下製造，確保營養完整保留、品質穩定如一。
+                  </p>
+                  <p className="text-lg text-foreground/80 leading-relaxed">
+                    從原料入廠到成品出貨，全程可追溯、全程把關，讓您的毛孩吃得安心。
+                  </p>
+                </div>
+              </div>
+              
+              {/* Quality Testing */}
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="order-2 md:order-1">
+                  <h4 className="text-2xl font-bold text-primary mb-4" style={displayFontStyle}>嚴格的科學檢測</h4>
+                  <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+                    我們的研發團隊由獸醫師、營養學家、食品科學家組成。每一批產品都經過微生物檢測、營養成分分析、農藥殘留檢驗，確保符合國際安全標準。
+                  </p>
+                  <p className="text-lg text-foreground/80 leading-relaxed">
+                    CAS 國家品質保證標章，代表我們敢讓自己的家人吃，也敢讓你的家人吃。
+                  </p>
+                </div>
+                <div className="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src={qualityTestingImageUrl}
+                    alt="Laboratory Quality Testing"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
             </div>
 
+            {/* Social Responsibility & Sustainability */}
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold text-primary mb-8" style={displayFontStyle}>社會責任與永續承諾</h3>
+              
+              {/* Social Responsibility */}
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src={socialResponsibilityImageUrl}
+                    alt="Animal Welfare and Care"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-bold text-primary mb-4" style={displayFontStyle}>動物福利承諾</h4>
+                  <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+                    我們不只關心您家裡的毛孩，也關心所有需要幫助的動物。CháMila 每年將部分利潤捐贈給動物保護組織，支持救援、醫療與收容工作。
+                  </p>
+                  <p className="text-lg text-foreground/80 leading-relaxed">
+                    因為我們相信：每一隻毛孩都值得被好好對待，無論牠來自哪裡。
+                  </p>
+                </div>
+              </div>
+              
+              {/* Sustainability */}
+              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="order-2 md:order-1">
+                  <h4 className="text-2xl font-bold text-primary mb-4" style={displayFontStyle}>環保包裝承諾</h4>
+                  <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+                    所有 CháMila 產品採用 100% 可回收的環保夾鏈袋包裝（50-300g），減少塑膠浪費。我們致力於在提供最優質營養的同時，也保護我們共同的地球。
+                  </p>
+                  <p className="text-lg text-foreground/80 leading-relaxed">
+                    為毛孩選擇 CháMila，也是為地球選擇一個更好的未來。
+                  </p>
+                </div>
+                <div className="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl">
+                  <img
+                    src={sustainabilityImageUrl}
+                    alt="Eco-Friendly Sustainable Packaging"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+            
             {/* Product Philosophy */}
             <div className="p-8 rounded-2xl bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
               <h3 className="text-2xl font-bold text-primary mb-8 text-center" style={displayFontStyle}>我們的承諾</h3>
