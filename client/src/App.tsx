@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Member from "./pages/Member";
 import FAQ from "./pages/FAQ";
+import ZeroZenProduct from "./pages/ZeroZenProduct";
 
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
       <Route path={"/auth"} component={Auth} />
       <Route path={"/member"} component={Member} />
       <Route path={"/faq"} component={FAQ} />
+      <Route path={"/zerozen-product"} component={ZeroZenProduct} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

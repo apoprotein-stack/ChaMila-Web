@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Leaf, Shield, Zap, Heart } from "lucide-react";
 import { useState } from "react";
+import { useLocation } from "wouter";
 import FunctionSelector from "@/components/FunctionSelector";
 import ReservationModal from "@/components/ReservationModal";
 
@@ -37,6 +38,7 @@ const sustainabilityImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/3105196632
 const displayFontStyle = { fontFamily: "Georgia, serif", fontWeight: "700" };
 
 export default function Home() {
+  const [, navigate] = useLocation();
   const [activeTab, setActiveTab] = useState("mission");
   const [isReservationOpen, setIsReservationOpen] = useState(false);
 
@@ -663,7 +665,10 @@ export default function Home() {
                   <p className="text-sm text-foreground/70 mb-3">{product.spec}</p>
                   <p className="text-lg font-semibold text-accent mb-4">{product.price}</p>
                   <p className="text-sm text-foreground/80 mb-4">{product.scene}</p>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                  <Button 
+                    onClick={() => navigate(`/zerozen-product?spec=${product.spec}`)}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  >
                     了解詳情
                   </Button>
                 </div>
