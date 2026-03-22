@@ -9,15 +9,17 @@ import Auth from "./pages/Auth";
 import Member from "./pages/Member";
 import FAQ from "./pages/FAQ";
 import ZeroZenProduct from "./pages/ZeroZenProduct";
+import ProductDetail from "./pages/ProductDetail";
 
 
 function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
+      <Route path={"/ "} component={Home} />
       <Route path={"/auth"} component={Auth} />
       <Route path={"/member"} component={Member} />
       <Route path={"/faq"} component={FAQ} />
+      <Route path={"/product/:id"} component={ProductDetail} />
       <Route path={"/zerozen-product/:id"} component={ZeroZenProduct} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
