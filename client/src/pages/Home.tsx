@@ -1,781 +1,316 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Leaf, Shield, Zap, Heart } from "lucide-react";
 import { useState } from "react";
 import { useLocation } from "wouter";
-import FunctionSelector from "@/components/FunctionSelector";
-import ReservationModal from "@/components/ReservationModal";
 
-const heroImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-hero-banner-final-jq7jj2MVgDakkTSxRcKKz2.webp";
-
-const productImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-product-showcase-final-bVi8MdWMSEEhiSyDrvLARC.webp";
-
-const technologyImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-technology-visual-final-D9vG8zS22r9FW29gkbos7m.webp";
-
-const dogPlayingUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-dog-playing-final-LkcsPbkFsyUU2dfxopLWsB.webp";
-
-const catActiveUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-cat-active-final-DskdRtFrJtsGP3wwF5iLsp.webp";
-
-const petsTogetherUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-pets-together-final-ZNayDj88wXNpoKYBurw5hD.webp";
-
-const dogHealthyUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-dog-healthy-vitality-final-XkCvUcbX8fXABXwaihdqPH.webp";
-
-const logoUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/foDWJtLKKXQBUytM.png";
-
-const zerozenLogoUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/WjSQDPRKfLBlEAkf.png";
-
-const zerozenProductImageUrl = "https://files.manuscdn.com/user_upload_by_module/session_file/310519663213447942/WixpoTFQLjYnKUlB.png";
-
-const brandStoryImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-brand-story-founder-WN2EpnGZZZpKc7qCwACkUW.webp";
-
-const qualityFactoryImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-quality-factory-PE9p389xPdQzYsAgFu77Eb.webp";
-
-const qualityTestingImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-quality-testing-Bg8NiMpzVtMwNnHxQpufv2.webp";
-
-const socialResponsibilityImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-social-responsibility-hMVLhpa7csJPn4svnsfnv7.webp";
-
-const sustainabilityImageUrl = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chamila-sustainability-Ph56jcNTsYNf93AsZQN.webp";
-
-const displayFontStyle = { fontFamily: "Georgia, serif", fontWeight: "700" };
+// Image URLs for Cha'Paludo brand
+const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chapaludo-hero-banner-ChrsERYKGUeHwSPScN9PFp.webp";
+const PRODUCT_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chapaludo-product-showcase-R42iXhhcT29pn6ScVPTNYG.webp";
+const HEALTHY_TEETH_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chapaludo-dog-teeth-healthy-Ym8zoyRDjaDGsmv5gdKJNQ.webp";
 
 export default function Home() {
-  const [, navigate] = useLocation();
-  const [activeTab, setActiveTab] = useState("mission");
-  const [isReservationOpen, setIsReservationOpen] = useState(false);
+  const [, setLocation] = useLocation();
+  const [showReservationModal, setShowReservationModal] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
-        <div className="container flex items-center justify-between h-16">
-          <div className="flex items-center gap-3">
-            <img
-              src={logoUrl}
-              alt="CháMila Logo"
-              className="w-10 h-10 object-contain"
-            />
-            <span className="font-bold text-lg text-primary" style={displayFontStyle}>CháMila</span>
-          </div>
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#about" className="text-sm text-foreground hover:text-primary transition">
-              品牌故事
-            </a>
-            <a href="#products" className="text-sm text-foreground hover:text-primary transition">
-              產品
-            </a>
-            <a href="#zerozen" className="text-sm text-foreground hover:text-primary transition">
-              ZeroZen
-            </a>
-            <a href="#technology" className="text-sm text-foreground hover:text-primary transition">
-              技術
-            </a>
-            <a href="/faq" className="text-sm text-foreground hover:text-primary transition">
-              常見問題
-            </a>
-            <a href="#contact" className="text-sm text-foreground hover:text-primary transition">
-              聯絡我們
-            </a>
-            <a href="/member" className="text-sm text-foreground hover:text-primary transition">
-              會員中心
-            </a>
-          </div>
-          <div className="flex items-center gap-2">
-            <a href="/auth" className="text-sm text-foreground hover:text-primary transition">
-              登入
-            </a>
-            <Button 
-              onClick={() => setIsReservationOpen(true)}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+    <div className="min-h-screen flex flex-col bg-white">
+      {/* Hero Section */}
+      <section className="relative w-full h-96 md:h-[500px] overflow-hidden">
+        <img
+          src={HERO_IMAGE}
+          alt="Cha'Paludo Dental Chews"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+          <div className="text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4" style={{ fontFamily: "Georgia, serif" }}>
+              Cha'Paludo
+            </h1>
+            <p className="text-xl md:text-2xl mb-8">機能潔牙骨</p>
+            <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+              兩支就夠，一天不缺席
+            </p>
+            <Button
+              size="lg"
+              onClick={() => setShowReservationModal(true)}
+              className="bg-green-600 hover:bg-green-700 text-white"
             >
               預約試吃
             </Button>
           </div>
         </div>
-      </nav>
+      </section>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[600px] lg:min-h-[700px]">
-          {/* Left Content */}
-          <div className="flex flex-col justify-center px-6 md:px-12 py-12 lg:py-20 bg-gradient-to-br from-primary/5 to-transparent">
-            <div className="max-w-xl">
-              <div className="inline-block mb-4 px-4 py-2 bg-accent/10 rounded-full">
-                <span className="text-sm font-semibold text-accent">芯研毛膳 Cha'Mila</span>
+      {/* Core Value Proposition */}
+      <section className="py-16 px-4 md:px-8 bg-gradient-to-b from-green-50 to-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            為什麼選擇 Cha'Paludo
+          </h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                title: "機能潔牙",
+                description: "專業配方設計，有效清潔牙齒、維持口腔健康"
+              },
+              {
+                title: "便利日常",
+                description: "每盒 30 支，每支 12g，每天兩支即可"
+              },
+              {
+                title: "天然成分",
+                description: "採用天然食材與機能成分，安全無虞"
+              },
+              {
+                title: "獸醫師認可",
+                description: "通過專業獸醫師背書與臨床驗證"
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-bold text-green-700 mb-3">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight" style={displayFontStyle}>
-                為毛孩的健康，做最好的選擇
-              </h1>
-              <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
-                在地臺灣豬 CAS認證 × 機能配方 × 獸醫師背書。透過 ThermoNutricUp 技術，將台灣在地豬肉轉化為寵物保健食品，讓毛孩享受科學級的營養補充。產品採用 50-300g 夾鏈袋包裝，新鮮便利。
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-primary hover:bg-primary/90 text-white text-base h-12 px-8">
-                  了解更多 <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                <Button 
-                  onClick={() => setIsReservationOpen(true)}
-                  variant="outline" 
-                  className="border-primary text-primary hover:bg-primary/5 text-base h-12 px-8"
-                >
-                  預約試吃
-                </Button>
-              </div>
-            </div>
+            ))}
           </div>
-
-          {/* Right Image */}
-          <div className="hidden lg:flex items-center justify-center bg-gradient-to-br from-primary to-primary/80 p-8">
-            <img
-              src={heroImageUrl}
-              alt="CháMila Premium Pet Supplements"
-              className="w-full h-full object-cover rounded-2xl shadow-2xl"
-            />
-          </div>
-        </div>
-
-        {/* Mobile Hero Image */}
-        <div className="lg:hidden w-full h-96 bg-gradient-to-br from-primary to-primary/80">
-          <img
-            src={heroImageUrl}
-            alt="CháMila Premium Pet Supplements"
-            className="w-full h-full object-cover"
-          />
         </div>
       </section>
 
-      {/* Vibrant Pet Section */}
-      <section className="py-16 bg-gradient-to-r from-primary/10 to-accent/10">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      {/* Product Showcase */}
+      <section className="py-16 px-4 md:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            產品介紹
+          </h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6" style={displayFontStyle}>
-                健康活力的毛孩
-              </h2>
-              <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
-                CháMila 的產品設計目標，就是讓每一隻毛孩都能展現最佳的活力與健康狀態。透過科學配方與優質肉源，我們幫助飼主為毛孩的日常保健做出最好的選擇。
-              </p>
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <h4 className="font-semibold text-primary mb-2">犬用保健</h4>
-                  <p className="text-sm text-foreground/70">針對狗狗的特定需求設計，從腸胃到心血管全面照顧。</p>
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-primary mb-2">貓用保健</h4>
-                  <p className="text-sm text-foreground/70">符合貓咪營養需求，提升活力與毛髮光澤。</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-xl">
               <img
-                src={petsTogetherUrl}
-                alt="Happy pets with CháMila"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values Section */}
-      <section className="py-20 bg-white">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4" style={displayFontStyle}>
-              核心價值
-            </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-              CháMila 致力於提供透明、科學、負責任的寵物保健解決方案
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Shield,
-                title: "成分透明",
-                description: "每批次完整成分表公開，原料來源可追溯"
-              },
-              {
-                icon: Leaf,
-                title: "台灣在地",
-                description: "在地臺灣豬 CAS認證，自建工廠直接控制品質"
-              },
-              {
-                icon: Zap,
-                title: "科學配方",
-                description: "機能配方設計，有明確的營養劑量與效果"
-              },
-              {
-                icon: Heart,
-                title: "獸醫背書",
-                description: "專業獸醫師推薦與臨床觀察數據支持"
-              }
-            ].map((value, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border hover:border-accent/30 transition"
-              >
-                <value.icon className="w-12 h-12 text-accent mb-4" />
-                <h3 className="text-xl font-semibold text-primary mb-3">{value.title}</h3>
-                <p className="text-foreground/70">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Brand Story Section - Origin Story */}
-      <section id="about" className="py-20 bg-white">
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center" style={displayFontStyle}>
-              品牌故事
-            </h2>
-            
-            {/* Origin Story */}
-            <div className="mb-16 p-8 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border">
-              <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>因為牠們是家人</h3>
-              <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
-                <p>
-                  我永遠記得那個下雨的晚上，米粒蜷在我懷裡，抓癢抓到皮都紅了，拉肚子拉到虛弱。帶去醫院，醫生一句「可能是食物過敏」，讓我心如刀割。
-                </p>
-                <p>
-                  原來我給她的「愛」，其實是一堆雞肉+牛肉+魚肉混在一起的飼料，蛋白質來源複雜又不明。市面上許多寵物食品，肉類來源並沒有強制完整溯源，飼主根本看不清裡面到底是什麼。結果毛小孩蛋白質過敏越來越普遍——皮膚發紅、掉毛、反覆耳炎、腸胃不適……這些問題，很多時候不是生病，而是「吃錯了」。
-                </p>
-                <p className="font-semibold text-primary">
-                  那一刻我真正明白：毛小孩不是寵物，牠們是我們生活裡最親密的家人。每天等我們回家、陪我們度過低潮、用一輩子無條件信任我們——這樣的家人，值得我們用最講究、最先進的方式去愛。
-                </p>
-              </div>
-            </div>
-
-            {/* Why Pork */}
-            <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>信賴台灣我選CAS 台灣豬</h3>
-                <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                  華人從小吃豬肉長大，我們最懂豬肉的安全與親切。在歐美，豬肉也已成為寵物食品的新寵——因為它相對低敏、蛋白質優質，不像牛肉、雞肉那麼容易引發過敏。
-                </p>
-                <p className="text-lg text-foreground/80 leading-relaxed">
-                  台灣年屠宰豬隻約 860 萬頭，豬肺、豬脾等副產品年產量穩定、成本低。我們透過自建工廠直接控制製程與品質，確保每一批產品都符合製藥級標準。
-                </p>
-              </div>
-              <div className="rounded-2xl overflow-hidden shadow-xl">
-                <img
-                  src={productImageUrl}
-                  alt="CháMila Product Range"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Philosophy */}
-            <div className="mb-16 p-8 rounded-2xl bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
-              <h3 className="text-2xl font-bold text-primary mb-6" style={displayFontStyle}>米其林精神 × 科學精準</h3>
-              <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                從那天起，我們決定用獨家營養技術 + 法式精心料理的精神，來重新定義寵物營養。就像頂級米其林主廚對待珍稀食材一樣：不只是使用，而是透過科學精準的調理與專利技術，把每一份營養價值完整釋放、穩定保留，並提升到最高生物利用率。
-              </p>
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                我們專注於豬肉中最精華、最珍貴的部位，運用我們獨家的營養技術——包括低溫酶解活化、奈米級微乳化包埋與多階段營養鎖定系統——完整釋放這些部位的天然高密度營養精華，遠遠超越一般豬肉所能提供的價值。同時，我們以極致嚴謹的態度，徹底去除多餘油脂與不需要的成分，只保留最純淨、最低脂、最高效能的營養核心。
-              </p>
-            </div>
-            {/* Quality Promise with Images */}
-            <div className="mb-16">
-              <h3 className="text-2xl font-bold text-primary mb-8" style={displayFontStyle}>品質承諾：從研發到您家</h3>
-              
-              {/* Quality Factory */}
-              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="rounded-2xl overflow-hidden shadow-xl">
-                  <img
-                    src={qualityFactoryImageUrl}
-                    alt="CháMila GMP Certified Factory"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-bold text-primary mb-4" style={displayFontStyle}>GMP 認證工廠</h4>
-                  <p className="text-lg text-foreground/80 leading-relaxed mb-4">
-                    我們的自建工廠採用 GMP 國際標準，配備 ThermoNutricUp 專利設備。每一批產品都在恆溫、恆濕、無菌環境下製造，確保營養完整保留、品質穩定如一。
-                  </p>
-                  <p className="text-lg text-foreground/80 leading-relaxed">
-                    從原料入廠到成品出貨，全程可追溯、全程把關，讓您的毛孩吃得安心。
-                  </p>
-                </div>
-              </div>
-              
-              {/* Quality Testing */}
-              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="order-2 md:order-1">
-                  <h4 className="text-2xl font-bold text-primary mb-4" style={displayFontStyle}>嚴格的科學檢測</h4>
-                  <p className="text-lg text-foreground/80 leading-relaxed mb-4">
-                    我們的研發團隊由獸醫師、營養學家、食品科學家組成。每一批產品都經過微生物檢測、營養成分分析、農藥殘留檢驗，確保符合國際安全標準。
-                  </p>
-                  <p className="text-lg text-foreground/80 leading-relaxed">
-                    CAS 國家品質保證標章，代表我們敢讓自己的家人吃，也敢讓你的家人吃。
-                  </p>
-                </div>
-                <div className="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl">
-                  <img
-                    src={qualityTestingImageUrl}
-                    alt="Laboratory Quality Testing"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Social Responsibility & Sustainability */}
-            <div className="mb-16">
-              <h3 className="text-2xl font-bold text-primary mb-8" style={displayFontStyle}>社會責任與永續承諾</h3>
-              
-              {/* Social Responsibility */}
-              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="rounded-2xl overflow-hidden shadow-xl">
-                  <img
-                    src={socialResponsibilityImageUrl}
-                    alt="Animal Welfare and Care"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-bold text-primary mb-4" style={displayFontStyle}>動物福利承諾</h4>
-                  <p className="text-lg text-foreground/80 leading-relaxed mb-4">
-                    我們不只關心您家裡的毛孩，也關心所有需要幫助的動物。CháMila 每年將部分利潤捐贈給動物保護組織，支持救援、醫療與收容工作。
-                  </p>
-                  <p className="text-lg text-foreground/80 leading-relaxed">
-                    因為我們相信：每一隻毛孩都值得被好好對待，無論牠來自哪裡。
-                  </p>
-                </div>
-              </div>
-              
-              {/* Sustainability */}
-              <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="order-2 md:order-1">
-                  <h4 className="text-2xl font-bold text-primary mb-4" style={displayFontStyle}>環保包裝承諾</h4>
-                  <p className="text-lg text-foreground/80 leading-relaxed mb-4">
-                    所有 CháMila 產品採用 100% 可回收的環保夾鏈袋包裝（50-300g），減少塑膠浪費。我們致力於在提供最優質營養的同時，也保護我們共同的地球。
-                  </p>
-                  <p className="text-lg text-foreground/80 leading-relaxed">
-                    為毛孩選擇 CháMila，也是為地球選擇一個更好的未來。
-                  </p>
-                </div>
-                <div className="order-1 md:order-2 rounded-2xl overflow-hidden shadow-xl">
-                  <img
-                    src={sustainabilityImageUrl}
-                    alt="Eco-Friendly Sustainable Packaging"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-            
-            {/* Product Philosophy */}
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-accent/10 to-primary/10 border border-accent/20">
-              <h3 className="text-2xl font-bold text-primary mb-8 text-center" style={displayFontStyle}>我們的承諾</h3>
-              <p className="text-lg text-foreground/80 leading-relaxed mb-8 text-center">
-                我們相信，真正的愛不是給最多，而是給最頂級、最科學、最懂的那一份。因為毛小孩是家人，我們也只想用最獨家、最講究的方式，回報這份無條件的愛。
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div className="p-6 bg-white rounded-lg border border-border">
-                  <h4 className="font-semibold text-primary text-lg mb-3">單一蛋白精華</h4>
-                  <p className="text-foreground/70">精選台灣豬肉，來源清楚，降低過敏風險</p>
-                </div>
-                <div className="p-6 bg-white rounded-lg border border-border">
-                  <h4 className="font-semibold text-primary text-lg mb-3">獨家營養技術</h4>
-                  <p className="text-foreground/70">ThermoNutricUp 技術，保留 95% 營養成分</p>
-                </div>
-                <div className="p-6 bg-white rounded-lg border border-border">
-                  <h4 className="font-semibold text-primary text-lg mb-3">法式精心調理</h4>
-                  <p className="text-foreground/70">米其林精神，精準調配每一份營養</p>
-                </div>
-                <div className="p-6 bg-white rounded-lg border border-border">
-                  <h4 className="font-semibold text-primary text-lg mb-3">CAS 國家品質保證</h4>
-                  <p className="text-foreground/70">每批檢驗，製藥級標準，敢讓家人吃</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technology Section */}
-      <section id="technology" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1 rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src={technologyImageUrl}
-                alt="TNU Technology"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="order-1 lg:order-2">
-              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6" style={displayFontStyle}>
-                ThermoNutricUp 技術
-              </h2>
-              <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
-                CháMila 的獨特技術優勢在於 ThermoNutricUp（TNU）技術，透過三階段精密製程，將營養成分完整保留在每一顆肉錠或每一條肉泥中。所有產品採用環保 50-300g 夾鏈袋包裝，方便飼主按需取用，確保新鮮度與便利性。
-              </p>
-
-              <div className="space-y-4">
-                {[
-                  { step: "第一階段", title: "精選肉源", desc: "台灣在地豬肺脾，新鮮直送工廠" },
-                  { step: "第二階段", title: "ThermoNutricUp 製程", desc: "精密溫度控制，保留 95% 以上營養成分" },
-                  { step: "第三階段", title: "機能配方", desc: "添加機能成分，完成保健食品化" }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-accent text-accent-foreground font-semibold">
-                        {idx + 1}
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-primary">{item.step}：{item.title}</h4>
-                      <p className="text-foreground/70">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Interactive Function Selector */}
-          <div className="mt-20 p-12 bg-white rounded-2xl border border-border shadow-lg">
-            <div className="text-center mb-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-primary mb-3" style={displayFontStyle}>
-                自由混搭機能組合
-              </h3>
-              <p className="text-foreground/70">
-                選擇毛孩需要的機能組合，即時看到營養成分與建議用量
-              </p>
-            </div>
-
-            <FunctionSelector />
-          </div>
-        </div>
-      </section>
-
-      {/* Active Pets Showcase */}
-      <section className="py-16 bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
-              <img
-                src={dogPlayingUrl}
-                alt="Happy dog playing outdoor"
-                className="w-full h-80 object-cover"
-              />
-              <div className="p-6 bg-gradient-to-br from-primary/5 to-accent/5">
-                <h3 className="font-semibold text-primary mb-2">活力充沛</h3>
-                <p className="text-sm text-foreground/70">毛孩的每一次跑跳，都是健康的表現。</p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
-              <img
-                src={catActiveUrl}
-                alt="Active cat playing indoor"
-                className="w-full h-80 object-cover"
-              />
-              <div className="p-6 bg-gradient-to-br from-primary/5 to-accent/5">
-                <h3 className="font-semibold text-primary mb-2">靈活敏捷</h3>
-                <p className="text-sm text-foreground/70">貓咪的敏捷身手，源自於完整的營養補充。</p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
-              <img
-                src={dogHealthyUrl}
-                alt="Healthy dog with vitality"
-                className="w-full h-80 object-cover"
-              />
-              <div className="p-6 bg-gradient-to-br from-primary/5 to-accent/5">
-                <h3 className="font-semibold text-primary mb-2">毛髮亮麗</h3>
-                <p className="text-sm text-foreground/70">優質營養讓毛孩的毛髮更加蓬鬆有光澤。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section id="products" className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4" style={displayFontStyle}>
-              機能產品
-            </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-              針對不同毛孩的健康需求，提供科學配方的保健方案
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: "腸胃保健", emoji: "🦴", desc: "改善消化吸收，維持腸道健康" },
-              { name: "心血管保健", emoji: "❤️", desc: "支持心臟功能，促進血液循環" },
-              { name: "關節護理", emoji: "🏃", desc: "強化關節，提升活動力" },
-              { name: "護肝排毒", emoji: "🌿", desc: "支持肝臟代謝，促進排毒" }
-            ].map((product, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-xl bg-white border border-border hover:border-accent hover:shadow-lg transition"
-              >
-                <div className="text-5xl mb-4">{product.emoji}</div>
-                <h3 className="text-xl font-semibold text-primary mb-3">{product.name}</h3>
-                <p className="text-foreground/70 mb-6">{product.desc}</p>
-                <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/5">
-                  了解詳情
-                </Button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Veterinarian Recommendation Section */}
-      <section className="py-20 bg-white">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4" style={displayFontStyle}>
-              獸醫師推薦
-            </h2>
-            <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-              來自專業獸醫師的信任背書，為毛孩的健康保駕護航
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "李獸醫",
-                clinic: "台北寵物醫療中心",
-                specialty: "內科專家",
-                testimonial: "CháMila 的 ThermoNutricUp 技術保留了豬肉的完整營養，我在臨床上看到使用者的毛孩腸胃狀況明顯改善。",
-                avatar: "🐾"
-              },
-              {
-                name: "王獸醫",
-                clinic: "新竹動物醫院",
-                specialty: "營養學專家",
-                testimonial: "在地臺灣豬 CAS認證的設計非常科學，避免了多種蛋白質混合可能引起的過敏反應。我推薦給許多有敏感腸胃的毛孩飼主。",
-                avatar: "🏥"
-              },
-              {
-                name: "陳獸醫",
-                clinic: "台中寵物健康診所",
-                specialty: "預防醫學專家",
-                testimonial: "保健食品化的概念很先進。CháMila 不只是零食，而是真正的營養補充，幫助毛孩從根本上提升免疫力。",
-                avatar: "💚"
-              }
-            ].map((vet, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-xl bg-gradient-to-br from-primary/5 to-accent/5 border border-border hover:border-accent transition"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="text-5xl">{vet.avatar}</div>
-                  <div>
-                    <h3 className="font-semibold text-primary text-lg">{vet.name}</h3>
-                    <p className="text-sm text-foreground/70">{vet.clinic}</p>
-                    <p className="text-xs text-accent font-semibold mt-1">{vet.specialty}</p>
-                  </div>
-                </div>
-                <p className="text-foreground/80 leading-relaxed italic">
-                  「{vet.testimonial}」
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ZeroZen Section */}
-      <section id="zerozen" className="py-20 bg-gradient-to-br from-blue-50 to-white">
-        <div className="container">
-          <div className="text-center mb-16">
-            <img
-              src={zerozenLogoUrl}
-              alt="ZeroZen Logo"
-              className="w-32 h-32 mx-auto mb-6 object-contain"
-            />
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4" style={displayFontStyle}>
-              ZeroZen 臭難忍
-            </h2>
-            <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
-              瞬時歸零，重塑生活美學。採用陽離子介面活性劑除臭技術，免稀釋直接用，讓寵物與居家環境瞬間清新。
-            </p>
-          </div>
-
-          {/* Product Matrix with Image */}
-          <div className="mb-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="rounded-2xl overflow-hidden shadow-xl bg-white p-8 flex items-center justify-center">
-              <img
-                src={zerozenProductImageUrl}
-                alt="ZeroZen 家庭隨手瓶"
-                className="w-full max-w-sm h-auto object-contain"
+                src={PRODUCT_IMAGE}
+                alt="Cha'Paludo Product Box"
+                className="w-full rounded-lg shadow-lg"
               />
             </div>
             <div>
-              <h3 className="text-3xl font-bold text-primary mb-8" style={displayFontStyle}>
-                產品矩陣 × 場景應用
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                Cha'Paludo 機能潔牙骨
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                {
-                  name: "出外隨身瓶",
-                  spec: "150ml",
-                  price: "$199",
-                  scene: "車內、散步、辦公室",
-                  icon: "🚗"
-                },
-                {
-                  name: "家庭隨手瓶",
-                  spec: "300ml",
-                  price: "$370",
-                  scene: "客廳、玄關、寵物區",
-                  icon: "🏠"
-                },
-                {
-                  name: "立即補充罐",
-                  spec: "300ml",
-                  price: "$280",
-                  scene: "隨手瓶用罄後即時替換",
-                  icon: "♻️"
-                },
-                {
-                  name: "個人補充罐",
-                  spec: "500ml",
-                  price: "$450",
-                  scene: "多寵家庭",
-                  icon: "👨‍👩‍👧‍👦"
-                },
-                {
-                  name: "居家補充瓶",
-                  spec: "2000ml",
-                  price: "$1,200",
-                  scene: "地板除垢、大面積清潔",
-                  icon: "🧹"
-                }
-              ].map((product, idx) => (
-                <div
-                  key={idx}
-                  className="p-6 rounded-xl bg-white border border-border hover:border-blue-400 hover:shadow-lg transition"
-                >
-                  <div className="text-4xl mb-4">{product.icon}</div>
-                  <h4 className="text-xl font-bold text-primary mb-2" style={displayFontStyle}>
-                    {product.name}
-                  </h4>
-                  <p className="text-sm text-foreground/70 mb-3">{product.spec}</p>
-                  <p className="text-lg font-semibold text-accent mb-4">{product.price}</p>
-                  <p className="text-sm text-foreground/80 mb-4">{product.scene}</p>
-                  <Button 
-                    onClick={() => navigate(`/zerozen-product?spec=${product.spec}`)}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                  >
-                    了解詳情
-                  </Button>
+              <div className="space-y-4 mb-8">
+                <div>
+                  <p className="font-bold text-gray-700">規格</p>
+                  <p className="text-gray-600">每支 12g，每盒 30 支（15 日份）</p>
                 </div>
-              ))}
-
+                <div>
+                  <p className="font-bold text-gray-700">核心機能</p>
+                  <p className="text-gray-600">潔牙、口氣清新、牙齦健康維護</p>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-700">適用對象</p>
+                  <p className="text-gray-600">全年齡犬貓（1 歲以上）</p>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-700">建議用量</p>
+                  <p className="text-gray-600">每天 1-2 支，可作為零食或獎勵</p>
+                </div>
               </div>
+              <Button
+                size="lg"
+                onClick={() => setLocation("/zerozen-product/pld-01")}
+                className="bg-green-600 hover:bg-green-700 text-white w-full"
+              >
+                查看詳細規格
+              </Button>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Technology Highlight */}
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white">
-            <h3 className="text-2xl font-bold mb-6" style={displayFontStyle}>
-              陽離子介面活性劑 × 免稀釋設計
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <div className="text-3xl mb-3">⚗️</div>
-                <h4 className="font-semibold mb-2">溫和高效成分</h4>
-                <p className="text-white/90">採用陽離子介面活性劑，溫和不刺激、除臭效果強、對寵物肌膚友善，提供最佳性價比。</p>
-              </div>
-              <div>
-                <div className="text-3xl mb-3">🎯</div>
-                <h4 className="font-semibold mb-2">免稀釋直接用</h4>
-                <p className="text-white/90">直擊競品痛點，無需換算稀釋倍數，降低決策成本，提升使用頻率。</p>
-              </div>
-              <div>
-                <div className="text-3xl mb-3">⚡</div>
-                <h4 className="font-semibold mb-2">瞬時歸零</h4>
-                <p className="text-white/90">科學除臭體驗，快速消除異味，讓寵物與居家環境瞬間清新。</p>
-              </div>
+      {/* Healthy Teeth Benefits */}
+      <section className="py-16 px-4 md:px-8 bg-green-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            健康牙齒的重要性
+          </h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+                毛孩的口腔健康，從現在開始
+              </h3>
+              <ul className="space-y-4 text-gray-600">
+                <li className="flex items-start">
+                  <span className="text-green-600 font-bold mr-3">✓</span>
+                  <span>牙齒健康直接影響毛孩的進食與消化</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 font-bold mr-3">✓</span>
+                  <span>定期潔牙可預防牙周病與口臭</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 font-bold mr-3">✓</span>
+                  <span>機能潔牙骨提供日常口腔護理解決方案</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-green-600 font-bold mr-3">✓</span>
+                  <span>與獸醫師建議的潔牙方式相輔相成</span>
+                </li>
+              </ul>
             </div>
+            <div>
+              <img
+                src={HEALTHY_TEETH_IMAGE}
+                alt="Healthy Dog Teeth"
+                className="w-full rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Brand Story */}
+      <section className="py-16 px-4 md:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            品牌故事
+          </h2>
+          <div className="space-y-8 text-gray-600 leading-relaxed">
+            <p>
+              Cha'Paludo 源自對毛孩口腔健康的深切關懷。我們發現許多飼主面臨一個共同困擾：
+              <strong>如何在日常生活中簡單、有效地維護毛孩的牙齒健康。</strong>
+            </p>
+            <p>
+              傳統的潔牙方式（如刷牙）對許多毛孩來說難以執行，而我們的使命就是
+              <strong>創造一個簡單、美味、有效的日常潔牙解決方案。</strong>
+            </p>
+            <p>
+              經過多年的研發與獸醫師的臨床驗證，Cha'Paludo 機能潔牙骨應運而生。
+              每一支潔牙骨都融合了機能成分與天然食材，
+              <strong>讓毛孩在享受美味的同時，自然地維護口腔健康。</strong>
+            </p>
+            <p>
+              <strong>「兩支就夠，一天不缺席」</strong>——這不只是一句標語，
+              而是我們對每位飼主的承諾：簡單、便利、有效的口腔護理，
+              讓毛孩擁有健康的笑容。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 px-4 md:px-8 bg-green-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+            常見問題
+          </h2>
+          <div className="space-y-6">
+            {[
+              {
+                q: "Cha'Paludo 適合多大的毛孩？",
+                a: "Cha'Paludo 適合 1 歲以上的犬貓。對於幼犬幼貓，建議先諮詢獸醫師。"
+              },
+              {
+                q: "每天要吃幾支？",
+                a: "建議每天 1-2 支，可視毛孩的體型與咀嚼習慣調整。"
+              },
+              {
+                q: "如何保存？",
+                a: "請存放於陰涼乾燥處，開封後建議在 2 週內食用完畢。"
+              },
+              {
+                q: "是否有過敏成分？",
+                a: "Cha'Paludo 採用天然食材製成，不含人工香料與色素。如毛孩有特殊過敏，請先諮詢獸醫師。"
+              },
+              {
+                q: "可以完全替代刷牙嗎？",
+                a: "Cha'Paludo 是日常口腔護理的補充方案，建議搭配定期獸醫師潔牙與居家刷牙。"
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="font-bold text-gray-800 mb-3">{item.q}</h3>
+                <p className="text-gray-600">{item.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-20 bg-primary text-white">
-        <div className="container text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={displayFontStyle}>
-            準備好為毛孩做最好的選擇了嗎？
+      <section className="py-16 px-4 md:px-8 bg-gradient-to-r from-green-600 to-green-700 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            開始毛孩的潔牙之旅
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            現在預約試吃，加入 LINE 社群，獲得 88 折首購優惠與獸醫師專業建議。
+          <p className="text-lg mb-8 opacity-90">
+            加入 Cha'Paludo 社群，獲得最新產品資訊與獸醫師建議
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground text-base h-12 px-8">
-              預約試吃 <ArrowRight className="ml-2 w-4 h-4" />
+            <Button
+              size="lg"
+              onClick={() => setShowReservationModal(true)}
+              className="bg-white text-green-700 hover:bg-gray-100"
+            >
+              預約試吃
             </Button>
             <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white/10 text-base h-12 px-8"
+              size="lg"
+              onClick={() => setLocation("/auth")}
+              className="bg-green-800 hover:bg-green-900 text-white"
             >
-              加入 LINE 社群
+              加入會員
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-foreground/5 border-t border-border py-12">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">C</span>
-                </div>
-                <span className="font-bold text-lg text-primary" style={displayFontStyle}>CháMila</span>
+      {/* Reservation Modal */}
+      {showReservationModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg max-w-md w-full p-8">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">預約試吃</h2>
+            <form className="space-y-4">
+              <input
+                type="text"
+                placeholder="飼主名稱"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+              />
+              <input
+                type="email"
+                placeholder="電子郵件"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+              />
+              <input
+                type="tel"
+                placeholder="聯絡電話"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+              />
+              <input
+                type="text"
+                placeholder="毛孩名稱"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+              />
+              <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600">
+                <option>毛孩類型（犬/貓）</option>
+                <option>犬</option>
+                <option>貓</option>
+              </select>
+              <div className="flex gap-4 pt-4">
+                <Button
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => setShowReservationModal(false)}
+                >
+                  取消
+                </Button>
+                <Button
+                  className="flex-1 bg-green-600 hover:bg-green-700 text-white"
+                  onClick={() => {
+                    setShowReservationModal(false);
+                    alert("感謝您的預約！我們將盡快與您聯絡。");
+                  }}
+                >
+                  提交
+                </Button>
               </div>
-              <p className="text-sm text-foreground/70">
-                為毛孩的健康，提供科學級的保健食品。
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">快速連結</h4>
-              <ul className="space-y-2 text-sm text-foreground/70">
-                <li><a href="#about" className="hover:text-primary transition">品牌故事</a></li>
-                <li><a href="#products" className="hover:text-primary transition">產品</a></li>
-                <li><a href="#technology" className="hover:text-primary transition">技術</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">聯絡方式</h4>
-              <ul className="space-y-2 text-sm text-foreground/70">
-                <li>Email: hello@chamila.tw</li>
-                <li>LINE: @chamila</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">關注我們</h4>
-              <div className="flex gap-4">
-                <a href="#" className="text-primary hover:text-accent transition">Facebook</a>
-                <a href="#" className="text-primary hover:text-accent transition">Instagram</a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-border pt-8 text-center text-sm text-foreground/60">
-            <p>&copy; 2026 CháMila 芯研毛膳. 版權所有。</p>
+            </form>
           </div>
         </div>
-      </footer>
-
-      {/* Reservation Modal */}
-      <ReservationModal 
-        isOpen={isReservationOpen} 
-        onClose={() => setIsReservationOpen(false)} 
-      />
+      )}
     </div>
   );
 }

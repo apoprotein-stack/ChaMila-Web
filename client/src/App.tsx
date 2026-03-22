@@ -18,7 +18,7 @@ function Router() {
       <Route path={"/auth"} component={Auth} />
       <Route path={"/member"} component={Member} />
       <Route path={"/faq"} component={FAQ} />
-      <Route path={"/zerozen-product"} component={ZeroZenProduct} />
+      <Route path={"/zerozen-product/:id"} component={ZeroZenProduct} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
