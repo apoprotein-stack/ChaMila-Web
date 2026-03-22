@@ -15,7 +15,7 @@ import ProductDetail from "./pages/ProductDetail";
 function Router() {
   return (
     <Switch>
-      <Route path={"/ "} component={Home} />
+      <Route path={"/"} component={Home} />
       <Route path={"/auth"} component={Auth} />
       <Route path={"/member"} component={Member} />
       <Route path={"/faq"} component={FAQ} />
