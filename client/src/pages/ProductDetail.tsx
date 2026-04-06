@@ -223,13 +223,42 @@ export default function ProductDetail() {
               </div>
             </div>
 
+            {/* TNU Technology */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">獨家 TNU 熱封營養技術</h2>
+              <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border-2 border-green-300">
+                <p className="text-gray-700 mb-4">
+                  <strong>TNU (ThemoNutricUp)</strong> 是 Cha'Paludo 獨家開發的熱封營養加強技術，
+                  能將完整的營養成分密封在每一支潔牙骨中。
+                </p>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-3">✓</span>
+                    <span>完整保留營養成分，不流失</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-3">✓</span>
+                    <span>每支都能提供最大的保健效果</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-3">✓</span>
+                    <span>讓毛孩吃零食也能獲得完整的機能保健</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-3">✓</span>
+                    <span>結合潔牙、保健、美味於一身</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
             {/* Safety & Certification */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">安全認證</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-6">安全認證與品質把關</h2>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                  <p className="font-semibold text-gray-800 mb-2">✓ 台灣豬 CAS 認證</p>
-                  <p className="text-sm text-gray-600">採用在地台灣豬，通過 CAS 認證把關</p>
+                <div className="bg-green-50 p-4 rounded-lg border-2 border-green-300">
+                  <p className="font-semibold text-gray-800 mb-2">✓ 100% 台灣豬 CAS 認證</p>
+                  <p className="text-sm text-gray-600">採用在地台灣豬，通過 CAS 認證把關，符合最高食品安全標準。台灣豬肉品質優良，營養豐富，是毛孩最好的蛋白質來源。</p>
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg border border-green-200">
                   <p className="font-semibold text-gray-800 mb-2">✓ 獸醫師推薦</p>
