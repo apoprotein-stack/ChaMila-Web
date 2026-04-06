@@ -14,16 +14,20 @@ const EVENING_ROUTINE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/31051966321
 const VET_CONSULTATION_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chapaludo-veterinary-consultation-WZqx7RfFiWUprTgXjyyVx6.webp";
 const HAPPY_DOG_TEETH_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663213447942/FqTesSteRuR8Smb57J7x3Y/chapaludo-happy-dog-teeth-EQLtwNKPB55qMfgP9okBxD.webp"
 
-// Product functions - Year 1 positioning
+// Product functions - All 4 functions
 const FUNCTIONS = [
-  { id: "digestive", name: "口腸共健", color: "bg-blue-100", textColor: "text-blue-700", description: "潔牙 × 腸道健康" },
-  { id: "skin", name: "口皮共健", color: "bg-pink-100", textColor: "text-pink-700", description: "潔牙 × 皮膚光澤" }
+  { id: "digestive", name: "口腸共健", color: "bg-blue-100", textColor: "text-blue-700", description: "潔牙 × 腸道健康", status: "available" },
+  { id: "skin", name: "口皮共健", color: "bg-pink-100", textColor: "text-pink-700", description: "潔牙 × 皮膚光澤", status: "available" },
+  { id: "joint", name: "口關共健", color: "bg-amber-100", textColor: "text-amber-700", description: "潔牙 × 關節靈活", status: "coming-soon" },
+  { id: "immune", name: "口免共健", color: "bg-green-100", textColor: "text-green-700", description: "潔牙 × 免疫支持", status: "coming-soon" }
 ];
 
-// Product sizes - Year 1 matrix
+// Product sizes - All 4 sizes
 const SIZES = [
   { id: "small", name: "S 尺寸", weight: "≤5kg 小型犬", price: 420, weight_per_pack: 180, pieces: 30 },
-  { id: "medium", name: "M 尺寸", weight: "5-10kg 小型犬", price: 480, weight_per_pack: 300, pieces: 30 }
+  { id: "medium", name: "M 尺寸", weight: "5-10kg 中型犬", price: 480, weight_per_pack: 300, pieces: 30 },
+  { id: "large", name: "L 尺寸", weight: "10-25kg 大型犬", price: 580, weight_per_pack: 450, pieces: 30 },
+  { id: "xlarge", name: "XL 尺寸", weight: ">25kg 超大型犬", price: 680, weight_per_pack: 600, pieces: 30 }
 ];
 
 export default function Home() {
@@ -92,9 +96,9 @@ export default function Home() {
 
       {/* Product Matrix Section */}
       <section className="py-16 px-4 md:px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
-            Year 1 產品矩陣
+            完整產品矩陣
           </h2>
           
           {/* Function Selector */}
@@ -104,51 +108,74 @@ export default function Home() {
               {FUNCTIONS.map((func) => (
                 <button
                   key={func.id}
-                  onClick={() => setSelectedFunction(func.id)}
+                  onClick={() => func.status === "available" && setSelectedFunction(func.id)}
+                  disabled={func.status === "coming-soon"}
                   className={`px-6 py-3 rounded-lg font-bold transition-all ${
                     selectedFunction === func.id
                       ? `${func.color} ${func.textColor} ring-2 ring-offset-2 ring-blue-600`
+                      : func.status === "coming-soon"
+                      ? "bg-gray-100 text-gray-400 cursor-not-allowed opacity-60"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
                   <div className="font-bold">{func.name}</div>
-                  <div className="text-sm">{func.description}</div>
+                  <div className="text-sm">{func.status === "coming-soon" ? "建置中" : func.description}</div>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Size Options */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {SIZES.map((size) => {
               const func = FUNCTIONS.find(f => f.id === selectedFunction);
-              const skuCode = selectedFunction === "digestive" ? "PI" : "PS";
-              const sizeCode = size.id === "small" ? "S" : "M";
+              const isAvailable = func?.status === "available";
+              const skuCodeMap: Record<string, string> = { digestive: "PI", skin: "PS", joint: "PJ", immune: "PIM" };
+              const skuCode = skuCodeMap[selectedFunction] || "";
+              const sizeCodeMap: Record<string, string> = { small: "S", medium: "M", large: "L", xlarge: "XL" };
+              const sizeCode = sizeCodeMap[size.id] || "";
+              
               return (
-                <div key={size.id} className={`p-6 rounded-lg shadow-md border-2 border-blue-200 ${func?.color}`}>
+                <div key={size.id} className={`p-6 rounded-lg shadow-md border-2 transition-all ${
+                  isAvailable
+                    ? `border-blue-200 ${func?.color}`
+                    : "border-gray-200 bg-gray-50"
+                }`}>
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">{size.name}</h3>
-                      <p className="text-gray-600">適用：{size.weight}</p>
+                      <h3 className="text-lg font-bold text-gray-800 mb-2">{size.name}</h3>
+                      <p className={`text-sm ${isAvailable ? "text-gray-600" : "text-gray-400"}`}>適用：{size.weight}</p>
                     </div>
-                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                      {skuCode}-{sizeCode}
-                    </span>
+                    {isAvailable && (
+                      <span className={`${func?.textColor} ${func?.color} px-2 py-1 rounded-full text-xs font-bold`}>
+                        {skuCode}-{sizeCode}
+                      </span>
+                    )}
                   </div>
-                  <div className="bg-white rounded p-4 mb-4">
-                    <p className="text-sm text-gray-600 mb-2">每盒 {size.pieces} 支（15 日份）</p>
-                    <p className="text-sm text-gray-600 mb-2">每盒重量 {size.weight_per_pack}g</p>
-                    <p className="text-lg font-bold text-blue-700 mb-3">
-                      {func?.name}
-                    </p>
-                    <p className="text-2xl font-bold text-gray-800">NT${size.price}</p>
-                  </div>
-                  <Button
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                    onClick={() => setLocation(`/product/${selectedFunction}-${size.id}`)}
-                  >
-                    查看詳情
-                  </Button>
+                  
+                  {isAvailable ? (
+                    <>
+                      <div className="bg-white rounded p-4 mb-4">
+                        <p className="text-sm text-gray-600 mb-2">每盒 {size.pieces} 支（15 日份）</p>
+                        <p className="text-sm text-gray-600 mb-2">每盒重量 {size.weight_per_pack}g</p>
+                        <p className="text-base font-bold text-blue-700 mb-3">
+                          {func?.name}
+                        </p>
+                        <p className="text-2xl font-bold text-gray-800">NT${size.price}</p>
+                      </div>
+                      <Button
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                        onClick={() => setLocation(`/product/${selectedFunction}-${size.id}`)}
+                      >
+                        查看詳情
+                      </Button>
+                    </>
+                  ) : (
+                    <div className="text-center py-8">
+                      <p className="text-gray-400 font-semibold">建置中</p>
+                      <p className="text-gray-400 text-sm mt-2">敬請期待</p>
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -174,28 +201,27 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-gray-800 mb-6">
                 Cha'Paludo 機能潔牙骨
               </h3>
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 text-gray-600 leading-relaxed">
                 <div>
-                  <p className="font-bold text-gray-700">核心理念</p>
-                  <p className="text-gray-600">「嚼一根，早晚兩次，照顧的不只是牙齒」</p>
+                  <h4 className="font-bold text-gray-800 mb-2">核心理念</h4>
+                  <p>「嚼一根，早晚兩次，照顧的不只是牙齒」</p>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-700">訴求機制</p>
-                  <p className="text-gray-600">潔牙為入口、全身為出口，透過每日咀嚼維護口腔與全身健康</p>
+                  <h4 className="font-bold text-gray-800 mb-2">訴求機制</h4>
+                  <p>潔牙為入口、全身為出口，透過每日咀嚼維護口腔與全身健康</p>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-700">Year 1 系列</p>
-                  <p className="text-gray-600">口腸共健（PI）、口皮共健（PS）</p>
+                  <h4 className="font-bold text-gray-800 mb-2">完整系列</h4>
+                  <p>口腸共健（PI）、口皮共健（PS）、口關共健（PJ）、口免共健（PIM）</p>
                 </div>
                 <div>
-                  <p className="font-bold text-gray-700">建議用量</p>
-                  <p className="text-gray-600">每天早晚各 1 支，可作為日常保健</p>
+                  <h4 className="font-bold text-gray-800 mb-2">建議用量</h4>
+                  <p>每天早晚各 1 支，可作為日常保健</p>
                 </div>
               </div>
               <Button
-                size="lg"
-                onClick={() => setLocation("/")}
-                className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+                className="mt-8 bg-blue-600 hover:bg-blue-700 text-white"
+                onClick={() => {}}
               >
                 了解更多
               </Button>
@@ -211,33 +237,36 @@ export default function Home() {
             常見問題
           </h2>
           <div className="space-y-6">
-            {[
-              {
-                q: "為什麼要選擇 Cha'Paludo？",
-                a: "Cha'Paludo 是機能潔牙骨，以潔牙為入口、全身為出口。透過每日咀嚼，同時維護口腔健康與全身機能。相比傳統保健食品或單純潔牙產品，我們提供更便利、更有效的日常保健方案。"
-              },
-              {
-                q: "口腸共健與口皮共健有什麼差別？",
-                a: "口腸共健（PI）主要針對腸道健康與消化機能；口皮共健（PS）主要針對皮膚屏障與毛髮光澤。兩者都透過潔牙為入口，維護口腔健康的同時，支持相應的全身機能。"
-              },
-              {
-                q: "為什麼要每日早晚各吃一支？",
-                a: "「嚼一根，早晚兩次」是我們的核心訴求。每日早晚各一支，能提供持續的潔牙效果與機能保健支持，是最有效的日常保健模式。"
-              },
-              {
-                q: "如何選擇 S 或 M 尺寸？",
-                a: "S 尺寸適合 ≤5kg 的小型犬，M 尺寸適合 5-10kg 的小型犬。請根據毛孩的體重選擇相應規格。"
-              },
-              {
-                q: "可以長期食用嗎？",
-                a: "可以。Cha'Paludo 採用安全的食材與製程，經過獸醫師臨床驗證，適合長期作為日常保健食品。"
-              }
-            ].map((item, idx) => (
-              <div key={idx} className="bg-blue-50 p-6 rounded-lg shadow-md">
-                <h3 className="font-bold text-gray-800 mb-3">{item.q}</h3>
-                <p className="text-gray-600">{item.a}</p>
-              </div>
-            ))}
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-bold text-gray-800 mb-3">為什麼要選擇 Cha'Paludo？</h3>
+              <p className="text-gray-600">
+                Cha'Paludo 是機能潔牙骨，以潔牙為入口、全身為出口。透過每日咀嚼，同時維護口腔健康與全身機能。相比傳統保健食品或單純潔牙產品，我們提供更便利、更有效的日常保健方案。
+              </p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-bold text-gray-800 mb-3">四個機能系列有什麼差別？</h3>
+              <p className="text-gray-600">
+                口腸共健（PI）主要針對腸道健康；口皮共健（PS）主要針對皮膚屏障；口關共健（PJ）主要針對關節靈活；口免共健（PIM）主要針對免疫支持。所有系列都透過潔牙為入口，維護口腔健康的同時，支持相應的全身機能。
+              </p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-bold text-gray-800 mb-3">為什麼要每日早晚各吃一支？</h3>
+              <p className="text-gray-600">
+                「嚼一根，早晚兩次」是我們的核心訴求。每日早晚各一支，能提供持續的潔牙效果與機能保健支持，是最有效的日常保健模式。
+              </p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-bold text-gray-800 mb-3">如何選擇合適的尺寸？</h3>
+              <p className="text-gray-600">
+                S 尺寸適合 ≤5kg 的小型犬，M 尺寸適合 5-10kg 的中型犬，L 尺寸適合 10-25kg 的大型犬，XL 尺寸適合 {">"}25kg 的超大型犬。請根據毛孬的體重選擇相應規格。
+              </p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="font-bold text-gray-800 mb-3">可以長期食用嗎？</h3>
+              <p className="text-gray-600">
+                可以。Cha'Paludo 採用安全的食材與製程，經過獸醫師臨床驗證，適合長期作為日常保健食品。
+              </p>
+            </div>
           </div>
         </div>
       </section>
