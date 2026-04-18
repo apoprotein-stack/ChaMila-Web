@@ -21,9 +21,12 @@ jobs:
         with:
           node-version: "20"
           cache: 'npm'
+          # 【關鍵點 1】告訴 Actions 去哪裡找 lock 檔以進行快取
+          cache-dependency-path: ./client/package-lock.json
 
       - name: Install & Build
-        # 確保指令是標準的 npm 命令
+        # 【關鍵點 2】指定在 client 目錄下執行 npm 指令
+        working-directory: ./client
         run: |
           npm install
           npm run build
@@ -31,8 +34,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # 根據 Vite 預設，成品會在 dist 目錄
-          path: ./dist
+          # 【關鍵點 3】上傳編譯後的結果，路徑也要補上 client/
+          path: ./client/dist
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
