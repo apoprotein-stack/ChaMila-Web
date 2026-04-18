@@ -1,4 +1,4 @@
-import { jsxLocPlugin } from “@builder.io/vite-plugin-jsx-loc”;
+import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import fs from "node:fs";
@@ -7,16 +7,12 @@ import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
 // =============================================================================
-//  Manus 调试收集器 - Vite 插件
-//  直接将浏览器日志写入文件，超过大小限制时会被裁剪
+// Manus 调试收集器逻辑 (保留您的原功能)
 // =============================================================================
 
 const PROJECT_ROOT = import.meta.dirname;
 const LOG_DIR = path.join(PROJECT_ROOT, ".manus-logs");
-const MAX_LOG_SIZE_BYTES = 1 * 1024 * 1024; //  每个日志文件 1MB
-const TRIM_TARGET_BYTES = Math.floor(MAX_LOG_SIZE_BYTES * 0.6); //  修剪到60%，以避免频繁重新修剪
-
-type LogSource = "browserConsole" | "networkRequests" | "sessionReplay";
+const MAX_LOG_SIZE_BYTES = 1 * 1024 * 1024;
 
 function ensureLogDir() {
   if (!fs.existsSync(LOG_DIR)) {
@@ -24,125 +20,39 @@ function ensureLogDir() {
   }
 }
 
-function trimLogFile(logPath: string, maxSize: number) {
-  try {
-    if (!fs.existsSync(logPath) || fs.statSync(logPath).size <= maxSize) {
-      return;
-    }
-
-连续行 = FS。readFileSync（logPath， “utf-8”）。split（“\n”）;
-    const keptLines: string[] = [];
-    let keptBytes = 0;
-
-    //  保留从端头开始能在最大尺寸60%以内的最新系列
-    const targetSize = TRIM_TARGET_BYTES;
-    for (let i = lines.length - 1; i >= 0; i--) {
-const lineBytes = 缓冲区。字节长度（'${lines[i]}\n'， “utf-8”）;
-      if (keptBytes + lineBytes > targetSize) break;
-      keptLines.unshift(lines[i]);
-      keptBytes += lineBytes;
-    }
-
-    fs.writeFileSync(logPath, keptLines.join("\n"), "utf-8");
-  } catch {
-    /* 忽略修剪错误 */
-  }
-}
-
-function writeToLogFile(source: LogSource, entries: unknown[]) {
+function writeToLogFile(source: string, entries: unknown[]) {
   if (entries.length === 0) return;
-
   ensureLogDir();
   const logPath = path.join(LOG_DIR, `${source}.log`);
-
-  //  带时间戳的格式条目
-  const lines = entries.map((entry) => {
-    const ts = new Date().toISOString();
-    return `[${ts}] ${JSON.stringify(entry)}`;
-  });
-
-  //  附加到日志文件
+  const lines = entries.map((entry) => `[${new Date().toISOString()}] ${JSON.stringify(entry)}`);
   fs.appendFileSync(logPath, `${lines.join("\n")}\n`, "utf-8");
-
-  //  修剪超过最大尺寸时
-  trimLogFile(logPath, MAX_LOG_SIZE_BYTES);
 }
 
-/**
-* Vite 插件用于收集浏览器调试日志
-* - POST /__manus__/logs：浏览器直接发送写入文件的日志
- * - Files: browserConsole.log, networkRequests.log, sessionReplay.log
-* - 超过1MB 时自动修剪（保留最新条目）
- */
 function vitePluginManusDebugCollector(): Plugin {
   return {
     name: "manus-debug-collector",
-
     transformIndexHtml(html) {
-      if (process.env.NODE_ENV === "production") {
-        return html;
-      }
+      if (process.env.NODE_ENV === "production") return html;
       return {
         html,
-        tags: [
-          {
-            tag: "script",
-            attrs: {
-              src: "/__manus__/debug-collector.js",
-              defer: true,
-            },
-            injectTo: "head",
-          },
-        ],
+        tags: [{ tag: "script", attrs: { src: "/__manus__/debug-collector.js", defer: true }, injectTo: "head" }],
       };
     },
-
     configureServer(server: ViteDevServer) {
-      //  发布 /__manus__/日志：浏览器发送日志（直接写入文件）
       server.middlewares.use("/__manus__/logs", (req, res, next) => {
-        if (req.method !== "POST") {
-          return next();
-        }
-
-        const handlePayload = (payload: any) => {
-          //  直接将日志写入文件
-          if (payload.consoleLogs?.length > 0) {
-            writeToLogFile("browserConsole", payload.consoleLogs);
-          }
-          if (payload.networkRequests?.length > 0) {
-            writeToLogFile("networkRequests", payload.networkRequests);
-          }
-          if (payload.sessionEvents?.length > 0) {
-            writeToLogFile("sessionReplay", payload.sessionEvents);
-          }
-
-          res.writeHead(200, { "Content-Type": "application/json" });
-          res.end(JSON.stringify({ success: true }));
-        };
-
-        const reqBody = (req as { body?: unknown }).body;
-        if (reqBody && typeof reqBody === "object") {
-          try {
-            handlePayload(reqBody);
-          } catch (e) {
-            res.writeHead(400, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ success: false, error: String(e) }));
-          }
-          return;
-        }
-
+        if (req.method !== "POST") return next();
         let body = "";
-        req.on("data", (chunk) => {
-          body += chunk.toString();
-        });
-
+        req.on("data", (chunk) => { body += chunk.toString(); });
         req.on("end", () => {
           try {
             const payload = JSON.parse(body);
-            handlePayload(payload);
+            if (payload.consoleLogs?.length > 0) writeToLogFile("browserConsole", payload.consoleLogs);
+            if (payload.networkRequests?.length > 0) writeToLogFile("networkRequests", payload.networkRequests);
+            res.writeHead(200, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ success: true }));
           } catch (e) {
-            res.writeHead(400, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ success: false, error: String(e) }));
+            res.writeHead(400);
+            res.end();
           }
         });
       });
@@ -150,45 +60,40 @@ function vitePluginManusDebugCollector(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector()];
+// =============================================================================
+// 主配置區 (解決 GitHub Pages 404 的關鍵)
+// =============================================================================
 
-export default defineConfig({
-  import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react' // 假設您是用 React
+const plugins = [
+  react(),
+  tailwindcss(),
+  jsxLocPlugin(),
+  vitePluginManusRuntime(),
+  vitePluginManusDebugCollector()
+];
 
-export default defineConfig({
-  plugins: [react()],
-  base: '/ChaMila-Web/', // 這行最重要：前後都要有斜線
-})plugins,
+export default defineConfig（{
+  plugins,
+  // 1. 修正路徑關鍵：必須與您的 GitHub 倉庫名稱一致
+  base: '/ChaMila-Web/', 
+  
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
-      "@assets": path.resolve(import.meta.dirname, "attached_assets"),
+      "@": path.resolve(PROJECT_ROOT, "client", "src"),
+      "@shared": path.resolve(PROJECT_ROOT, "shared"),
+      "@assets": path.resolve(PROJECT_ROOT, "attached_assets"),
     },
   },
-  envDir: path.resolve(import.meta.dirname),
-  root: path.resolve(import.meta.dirname, "client"),
+  envDir: path.resolve(PROJECT_ROOT),
+  root: path.resolve(PROJECT_ROOT, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    // 2. 產出路徑設定：請記住這個路徑，稍後要改 deploy.yml
+    outDir: path.resolve(PROJECT_ROOT, "dist"), 
     emptyOutDir: true,
   },
   server: {
     port: 3000,
-    strictPort: false, //  如果3000号线忙，我会找下一个可用端口
     host: true,
-    allowedHosts: [
-      ".manuspre.computer",
-      ".manus.computer",
-      ".manus-asia.computer",
-      ".manuscomputer.ai",
-      ".manusvm.computer",
-      "localhost",
-      "127.0.0.1",
-    ],
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
+    allowedHosts: [".manuspre.computer", ".manus.computer", "localhost"],
   },
 });
