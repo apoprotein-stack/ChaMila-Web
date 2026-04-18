@@ -1,9 +1,37 @@
-- 名称： Build with Vite（与 Vite 共建）
-        # 直接在根目錄執行即可，因為我們在 config 裡寫好路徑了
- 运行： NPM 安装 & NPM 运行构建
+名称： 部署 Vite 到 Pages
+on:
+  push:
+    branches: ["main"]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: 'npm'
+          cache-dependency-path: client/package.json
+
+      - name: Install & Build
+        # 先進入 client 資料夾，安裝後直接打包
+        run: |
+  CD 客户端
+  NPM 安装
+  NPM 运行构建
 
  - 名称： 上传文物
         uses: actions/upload-pages-artifact@v3
         with:
-          # 指向根目錄的 dist
-          path: ./dist
+          # 這是最關鍵的路徑：Vite 會在 client 裡面產生 dist
+          path: client/dist
+
+ - 名称： 部署到 GitHub Pages
+        uses: actions/deploy-pages@v4
