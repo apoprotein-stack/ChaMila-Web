@@ -20,11 +20,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          # 這裡不放 cache 設定，避開報錯
 
       - name: Install & Build
         run: |
-          npm install
+          # 這裡加上 --legacy-peer-deps 來解決 Vite 版本衝突問題
+          npm install --legacy-peer-deps
           npm run build
 
       - name: Upload artifact
