@@ -20,13 +20,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: 'npm'
-          # 【關鍵點 1】告訴 Actions 去哪裡找 lock 檔以進行快取
-          cache-dependency-path: ./package-lock.json
+          cache: 'npm' # 現在可以安全開啟了，它會自動找根目錄的 lock 檔
 
       - name: Install & Build
-        # 【關鍵點 2】指定在 client 目錄下執行 npm 指令
-        working-directory: .
         run: |
           npm install
           npm run build
@@ -34,7 +30,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # 【關鍵點 3】上傳編譯後的結果，路徑也要補上
+          # Vite 預設在根目錄編譯後會產生在 dist
           path: ./dist
 
       - name: Deploy to GitHub Pages
