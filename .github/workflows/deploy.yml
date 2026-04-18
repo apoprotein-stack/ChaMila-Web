@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: 'npm' # 現在可以安全開啟了，它會自動找根目錄的 lock 檔
+          # 這裡不放 cache 設定，避開報錯
 
       - name: Install & Build
         run: |
@@ -30,7 +30,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Vite 預設在根目錄編譯後會產生在 dist
           path: ./dist
 
       - name: Deploy to GitHub Pages
