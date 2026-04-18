@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react()],
   base: '/ChaMila-Web/', 
   root: "client",
+  server: {
+    allowedHosts: ['5173-i1xh1vlxszdx6sd9waw8h-4836cda2.sg1.manus.computer', 'localhost']
+  },
   build: {
     outDir: "../dist", 
     emptyOutDir: true,
