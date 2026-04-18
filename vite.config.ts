@@ -72,7 +72,7 @@ const plugins = [
   vitePluginManusDebugCollector()
 ];
 
-export default defineConfig（{
+export default defineConfig({
   plugins,
   // 1. 修正路徑關鍵：必須與您的 GitHub 倉庫名稱一致
   base: '/ChaMila-Web/', 
