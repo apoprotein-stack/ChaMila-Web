@@ -21,7 +21,7 @@ jobs:
           cache-dependency-path: client/package.json
 
       - name: Install & Build
-        # 先進入 client 資料夾，安裝後直接打包
+        # 關鍵：進入 client 資料夾進行安裝與演算
         run: |
   CD 客户端
   NPM 安装
@@ -30,7 +30,7 @@ jobs:
  - 名称： 上传文物
         uses: actions/upload-pages-artifact@v3
         with:
-          # 這是最關鍵的路徑：Vite 會在 client 裡面產生 dist
+          # 指向 client 內生成的 dist 資料夾
           path: client/dist
 
  - 名称： 部署到 GitHub Pages
