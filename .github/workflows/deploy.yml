@@ -1,7 +1,7 @@
-name: Deploy Next.js to Pages
+<span att="0">名称</span><span att="1">： </span>部署 Vite 到 Pages
 on:
   push:
-    branches: ["main"] # 當您更新 main 分支時觸發
+    branches: ["main"]
 permissions:
   contents: read
   pages: write
@@ -12,17 +12,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Install dependencies
-        run: npm install
-      - name: Build with Next.js
-        run: npm run build
-      - name: Upload artifact
+          cache: 'npm'
+
+ - 名称： 安装依赖
+        # 強制在根目錄安裝所有依賴，包含 vite
+ 运行： NPM 安装
+
+ - 名称： Build with Vite（与 Vite 共建）
+        # 執行編譯，這會根據 vite.config.ts 產出 dist 資料夾
+ 运行： NPM 运行构建
+
+ - 名称： 上传文物
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
-      - name: Deploy to GitHub Pages
+          # 務必與 vite.config.ts 中的 outDir 保持一致
+          path: ./dist
+
+ - 名称： 部署到 GitHub Pages
         uses: actions/deploy-pages@v4
