@@ -91,4 +91,13 @@
     "vite-plugin-manus-runtime": "^0.0.57",
     "vitest": "^2.1.4"
   },
-  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388
+  "packageManager": "pnpm@10.4.1",
+  "pnpm": {
+    "patchedDependencies": {
+      "wouter@3.7.1": "patches/wouter@3.7.1.patch"
+    },
+    "overrides": {
+      "tailwindcss>nanoid": "3.3.7"
+    }
+  }
+}
