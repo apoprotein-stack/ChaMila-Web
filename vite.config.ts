@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react()],
   root: "client",
   server: {
-    allowedHosts: ['5173-i1xh1vlxszdx6sd9waw8h-4836cda2.sg1.manus.computer', 'localhost']
+    allowedHosts: ['localhost'],
   },
   build: {
-    outDir: "../dist", 
+    outDir: "../dist",
     emptyOutDir: true,
     rollupOptions: {
       input: path.resolve(__dirname, "client/index.html"),
