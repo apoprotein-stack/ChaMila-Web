@@ -98,3 +98,10 @@
     }
   }
 }
+{
+  "name": "cha-mila-web",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": { ... }
+}
